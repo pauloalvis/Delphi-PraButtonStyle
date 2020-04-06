@@ -1,7 +1,7 @@
 object uMain: TuMain
   Left = 0
   Top = 0
-  Caption = 'R'
+  Caption = 'PraButtonStyle version 1.0.0.0'
   ClientHeight = 402
   ClientWidth = 575
   Color = clWindow
