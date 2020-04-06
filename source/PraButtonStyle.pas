@@ -57,7 +57,6 @@ type
     FPicture: TPicture;
     FPictureFocused: TPicture;
     FPictureDisabled: TPicture;
-    FPictureAlign: TPraAlignment;
     FPictureMarginLeft: SmallInt;
 
     FFontDown: TFont;
@@ -89,7 +88,6 @@ type
     procedure SetPicture(const Value: TPicture);
     procedure SetPictureFocused(const Value: TPicture);
     procedure SetPictureDisabled(const Value: TPicture);
-    procedure SetPictureAlign(const Value: TPraAlignment);
     procedure SetPictureMarginLeft(const Value: SmallInt);
 
     procedure SetFontDown(const Value: TFont);
@@ -100,7 +98,6 @@ type
     function IsSpacing: Boolean;
     function IsShowCaption: Boolean;
     function IsClickOnEnter: Boolean;
-    function IsPictureAlign: Boolean;
     function IsStoredAlignment: Boolean;
     function IsPictureMarginLeft: Boolean;
 
@@ -205,7 +202,6 @@ type
     property ShowCaption: Boolean read FShowCaption write SetShowCaption stored IsShowCaption default true;
     property ClickOnEnter: Boolean read FClickOnEnter write SetClickOnEnter stored IsClickOnEnter default true;
     property Alignment: TPraAlignment read FAlignment write SetAlignment stored IsStoredAlignment default paCenter;
-    property PictureAlign: TPraAlignment read FPictureAlign write SetPictureAlign stored IsPictureAlign default paLeftJustify;
     property PictureCenter: Boolean read FPictureCenter write SetPictureCenter stored isPictureCenter default false;
     property PictureMarginLeft: SmallInt read FPictureMarginLeft write SetPictureMarginLeft stored IsPictureMarginLeft default 3;
 
@@ -338,7 +334,6 @@ begin
   FShowCaption := true;
 
   FPictureMarginLeft := 3;
-  FPictureAlign := paLeftJustify;
 
   FClickOnEnter := true;
   FAlignment := paCenter;
@@ -464,11 +459,6 @@ end;
 function TPraButtonStyle.IsClickOnEnter: Boolean;
 begin
   result := FClickOnEnter <> true;
-end;
-
-function TPraButtonStyle.IsPictureAlign: Boolean;
-begin
-  result := FPictureAlign <> paLeftJustify;
 end;
 
 function TPraButtonStyle.isPictureCenter: Boolean;
@@ -702,15 +692,6 @@ end;
 procedure TPraButtonStyle.SetPicture(const Value: TPicture);
 begin
   FPicture.Assign(Value);
-end;
-
-procedure TPraButtonStyle.SetPictureAlign(const Value: TPraAlignment);
-begin
-  if FPictureAlign <> Value then
-  begin
-    FPictureAlign := Value;
-    invalidate;
-  end;
 end;
 
 procedure TPraButtonStyle.SetPictureCenter(const Value: Boolean);

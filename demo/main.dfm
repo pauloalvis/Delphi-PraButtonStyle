@@ -58,7 +58,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = [fsBold]
       Caption = 'Primary'
-      TabOrder = 2
+      TabOrder = 1
       Radius = 4
     end
     object PraButtonStyle2: TPraButtonStyle
@@ -214,7 +214,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = [fsBold]
       Caption = 'Info'
-      TabOrder = 7
+      TabOrder = 6
       Radius = 4
     end
     object PraButtonStyle6: TPraButtonStyle
@@ -292,7 +292,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Success'
-      TabOrder = 10
+      TabOrder = 9
       Radius = 4
     end
     object PraButtonStyle8: TPraButtonStyle
@@ -331,7 +331,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Danger'
-      TabOrder = 12
+      TabOrder = 11
       Radius = 4
     end
     object PraButtonStyle9: TPraButtonStyle
@@ -370,7 +370,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Warning'
-      TabOrder = 1
+      TabOrder = 2
       Radius = 4
     end
     object PraButtonStyle10: TPraButtonStyle
@@ -409,7 +409,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Info'
-      TabOrder = 6
+      TabOrder = 7
       Radius = 4
     end
     object PraButtonStyle11: TPraButtonStyle
@@ -504,10 +504,9 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 14
+      TabOrder = 13
       Radius = 4
       Alignment = paLeftJustify
-      PictureAlign = paCenter
       PictureCenter = True
     end
     object PraButtonStyle12: TPraButtonStyle
@@ -589,9 +588,8 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 15
+      TabOrder = 14
       Radius = 4
-      PictureAlign = paCenter
       PictureCenter = True
     end
     object PraButtonStyle13: TPraButtonStyle
@@ -682,9 +680,8 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 16
+      TabOrder = 15
       Radius = 4
-      PictureAlign = paCenter
       PictureCenter = True
     end
     object PraButtonStyle14: TPraButtonStyle
@@ -766,9 +763,8 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 13
+      TabOrder = 16
       Radius = 4
-      PictureAlign = paCenter
       PictureCenter = True
     end
     object Label1: TLabel
@@ -857,7 +853,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Save'
-      TabOrder = 9
+      TabOrder = 10
       Radius = 4
       Alignment = paLeftJustify
       PictureMarginLeft = 17
@@ -926,7 +922,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Delete'
-      TabOrder = 11
+      TabOrder = 12
       Radius = 4
       Alignment = paLeftJustify
       PictureMarginLeft = 8
