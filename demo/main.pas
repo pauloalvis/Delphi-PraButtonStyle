@@ -25,6 +25,9 @@ type
     PraButtonStyle13: TPraButtonStyle;
     PraButtonStyle14: TPraButtonStyle;
     Label1: TLabel;
+    PraButtonStyle16: TPraButtonStyle;
+    PraButtonStyle15: TPraButtonStyle;
+    PraButtonStyle17: TPraButtonStyle;
   end;
 
 var

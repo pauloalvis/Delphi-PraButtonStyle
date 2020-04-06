@@ -22,8 +22,6 @@ object uMain: TuMain
     Color = 3877158
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = -8
-    ExplicitTop = -8
     object PraButtonStyle1: TPraButtonStyle
       Left = 32
       Top = 40
@@ -60,7 +58,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = [fsBold]
       Caption = 'Primary'
-      TabOrder = 1
+      TabOrder = 2
       Radius = 4
     end
     object PraButtonStyle2: TPraButtonStyle
@@ -99,7 +97,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = [fsBold]
       Caption = 'Success'
-      TabOrder = 2
+      TabOrder = 3
       Radius = 4
     end
     object PraButtonStyle3: TPraButtonStyle
@@ -216,7 +214,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = [fsBold]
       Caption = 'Info'
-      TabOrder = 6
+      TabOrder = 7
       Radius = 4
     end
     object PraButtonStyle6: TPraButtonStyle
@@ -255,7 +253,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Primary'
-      TabOrder = 7
+      TabOrder = 8
       Radius = 4
     end
     object PraButtonStyle7: TPraButtonStyle
@@ -294,7 +292,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Success'
-      TabOrder = 9
+      TabOrder = 10
       Radius = 4
     end
     object PraButtonStyle8: TPraButtonStyle
@@ -333,7 +331,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Danger'
-      TabOrder = 10
+      TabOrder = 12
       Radius = 4
     end
     object PraButtonStyle9: TPraButtonStyle
@@ -372,7 +370,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Warning'
-      TabOrder = 0
+      TabOrder = 1
       Radius = 4
     end
     object PraButtonStyle10: TPraButtonStyle
@@ -411,7 +409,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Info'
-      TabOrder = 3
+      TabOrder = 6
       Radius = 4
     end
     object PraButtonStyle11: TPraButtonStyle
@@ -506,7 +504,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 11
+      TabOrder = 14
       Radius = 4
       Alignment = paLeftJustify
       PictureAlign = paCenter
@@ -591,7 +589,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 12
+      TabOrder = 15
       Radius = 4
       PictureAlign = paCenter
       PictureCenter = True
@@ -684,7 +682,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 13
+      TabOrder = 16
       Radius = 4
       PictureAlign = paCenter
       PictureCenter = True
@@ -768,27 +766,249 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 8
+      TabOrder = 13
       Radius = 4
       PictureAlign = paCenter
       PictureCenter = True
     end
     object Label1: TLabel
-      Left = 1
-      Top = 385
-      Width = 573
-      Height = 16
+      AlignWithMargins = True
+      Left = 4
+      Top = 382
+      Width = 560
+      Height = 19
+      Margins.Right = 10
       Align = alBottom
       Alignment = taRightJustify
       Caption = 'Email: pauloalvis@hotmail.com'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindow
-      Font.Height = -13
+      Font.Height = -16
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      ExplicitLeft = 396
-      ExplicitWidth = 178
+    end
+    object PraButtonStyle16: TPraButtonStyle
+      Left = 32
+      Top = 203
+      Width = 93
+      Height = 41
+      Cursor = crHandPoint
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 8572928
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      Pen.Color = 8572928
+      PenDown.Color = 6935040
+      PenDown.Width = 3
+      PenFocused.Style = psClear
+      PenDisabled.Style = psClear
+      Brush.Color = 3877158
+      BrushDown.Color = 6990336
+      BrushFocused.Color = 6990336
+      BrushDisabled.Color = 15461355
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+        00180806000000E0773DF80000000467414D410000B18F0BFC61050000000173
+        52474200AECE1CE900000006624B4744000000000000F943BB7F000000097048
+        597300000048000000480046C96B3E000000DF4944415478DA6364A031601C66
+        169C6FF66260FC3F0BC89226C994FFFF1B190CEB1B085B70A1E931909421CBA9
+        382C41B7E03F9836A8232EE860EA11B6743218D457D0D0024C4B686001AAFE01
+        B28052306A012D2CF8C5F09FA196E1FFDF25601E134B2C30393601596C54B280
+        B182C1A0B613556D7339D0920EEA58F087598AC1A4FA398AD8957A09A0F873AC
+        EA49B6E0DF5F6906A3C667A86A5B8005E2BF27340CA2265071D04E250B8091CC
+        C058C7F0EFCF62308F824826BFB84680C7400BE4B05B70A9D193E11FE32C0A2C
+        79CCC0C898C6A05FBB03BB05340043DF0200CC7E7419498EE9C2000000257445
+        5874646174653A63726561746500323032302D30342D30365431353A33313A32
+        372B30303A3030C7E7645D0000002574455874646174653A6D6F646966790032
+        3032302D30342D30365431353A33313A32372B30303A3030B6BADCE100000028
+        744558747376673A626173652D7572690066696C653A2F2F2F746D702F6D6167
+        69636B2D61526E574F78414BA86AB51A0000000049454E44AE426082}
+      PictureFocused.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+        00180806000000E0773DF80000000467414D410000B18F0BFC61050000000173
+        52474200AECE1CE900000006624B4744000000000000F943BB7F000000097048
+        597300000048000000480046C96B3E000000B94944415478DA6364A031601C5E
+        16FCFFFFDF0B48CD02626912CD696464646C20C682C7404A864CC762B504DD82
+        FF60412020C644987A24D009D45A414B0B302CA1850528FA07C6024AC1A80534
+        B1E01710D702F112283F16889B80988D5A165400F574A2A92D07521DD4B2400A
+        A8E7399A5A0920F51C9B62722C9006EA7986A61654203EA16510818A83766A59
+        008AE43A205E0CE5931DC99414D730F01868BE1C2E0B3C1920150EB996801C98
+        06B46007560B680186BE050021BA7919CA701719000000257445587464617465
+        3A63726561746500323032302D30342D30365431353A33303A34372B30303A30
+        30EE4A06E40000002574455874646174653A6D6F6469667900323032302D3034
+        2D30365431353A33303A34372B30303A30309F17BE5800000028744558747376
+        673A626173652D7572690066696C653A2F2F2F746D702F6D616769636B2D6648
+        487031784D77CB2F8E980000000049454E44AE426082}
+      FontDown.Charset = DEFAULT_CHARSET
+      FontDown.Color = clWindow
+      FontDown.Height = -13
+      FontDown.Name = 'Segoe UI'
+      FontDown.Style = []
+      FontFocused.Charset = DEFAULT_CHARSET
+      FontFocused.Color = clWindow
+      FontFocused.Height = -13
+      FontFocused.Name = 'Segoe UI'
+      FontFocused.Style = []
+      FontDisabled.Charset = DEFAULT_CHARSET
+      FontDisabled.Color = clWindow
+      FontDisabled.Height = -13
+      FontDisabled.Name = 'Segoe UI'
+      FontDisabled.Style = []
+      Caption = 'Save'
+      TabOrder = 9
+      Radius = 4
+      Alignment = paLeftJustify
+      PictureMarginLeft = 17
+    end
+    object PraButtonStyle15: TPraButtonStyle
+      Left = 135
+      Top = 203
+      Width = 93
+      Height = 41
+      Cursor = crHandPoint
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 1186551
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      Pen.Color = 3620600
+      PenDown.Color = 8421631
+      PenDown.Width = 3
+      PenFocused.Style = psClear
+      PenDisabled.Style = psClear
+      Brush.Color = 3877158
+      BrushDown.Color = 1186551
+      BrushFocused.Color = 1186551
+      BrushDisabled.Color = 15461355
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+        00180806000000E0773DF80000000467414D410000B18F0BFC61050000000173
+        52474200AECE1CE900000006624B4744000000000000F943BB7F000000097048
+        597300000048000000480046C96B3E000000774944415478DA6364A031601CFE
+        167C931494636462DCCFF09F41094DEA11C39FBF8E9CAF3EDE23D982EF5242FF
+        C9712DE7B37718E60D8C05D404382D20D517D85C3F6AC1A805A3168C5A40050B
+        1E03291922CD7F0CB4408E240B7E48087AFE67629C4584258F19FF33A4713C7F
+        B783240BA80586BE0500A1CA4E195DDDD8300000002574455874646174653A63
+        726561746500323032302D30342D30365431353A34343A35372B30303A303002
+        30B3830000002574455874646174653A6D6F6469667900323032302D30342D30
+        365431353A34343A35372B30303A3030736D0B3F00000028744558747376673A
+        626173652D7572690066696C653A2F2F2F746D702F6D616769636B2D7161346C
+        4B66444C4C77E1330000000049454E44AE426082}
+      PictureFocused.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+        00180806000000E0773DF80000000467414D410000B18F0BFC61050000000173
+        52474200AECE1CE900000006624B4744000000000000F943BB7F000000097048
+        597300000048000000480046C96B3E000000664944415478DA6364A031601CFE
+        16FCFFFF5F0E48ED07622534A94740ECC8C8C8788F640B8086FE27CBB5403038
+        2CA026C06901A9BEC0E6FA510B462D18B560D4022A58F01848C91069FE63A0F9
+        72A45AE009A466116109C82169400B76906401B5C0D0B70000AAAA491951425F
+        A20000002574455874646174653A63726561746500323032302D30342D303654
+        31353A34343A31302B30303A303043DD83F70000002574455874646174653A6D
+        6F6469667900323032302D30342D30365431353A34343A31302B30303A303032
+        803B4B00000028744558747376673A626173652D7572690066696C653A2F2F2F
+        746D702F6D616769636B2D673952476B4D7A46BB1F78410000000049454E44AE
+        426082}
+      FontDown.Charset = DEFAULT_CHARSET
+      FontDown.Color = clWindow
+      FontDown.Height = -13
+      FontDown.Name = 'Segoe UI'
+      FontDown.Style = []
+      FontFocused.Charset = DEFAULT_CHARSET
+      FontFocused.Color = clWindow
+      FontFocused.Height = -13
+      FontFocused.Name = 'Segoe UI'
+      FontFocused.Style = []
+      FontDisabled.Charset = DEFAULT_CHARSET
+      FontDisabled.Color = clWindow
+      FontDisabled.Height = -13
+      FontDisabled.Name = 'Segoe UI'
+      FontDisabled.Style = []
+      Caption = 'Delete'
+      TabOrder = 11
+      Radius = 4
+      Alignment = paLeftJustify
+      PictureMarginLeft = 8
+    end
+    object PraButtonStyle17: TPraButtonStyle
+      Left = 238
+      Top = 203
+      Width = 93
+      Height = 41
+      Cursor = crHandPoint
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 1094655
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      Pen.Color = 3588095
+      PenDown.Color = 8454143
+      PenDown.Width = 3
+      PenFocused.Style = psClear
+      PenDisabled.Style = psClear
+      Brush.Color = 3877158
+      BrushDown.Color = 1094655
+      BrushFocused.Color = 1094655
+      BrushDisabled.Color = 15461355
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+        00180806000000E0773DF80000000467414D410000B18F0BFC61050000000173
+        52474200AECE1CE900000006624B4744000000000000F943BB7F000000097048
+        597300000048000000480046C96B3E000001124944415478DAEDD3CD6AC24010
+        C0F19942A92735F5E213692D4928E823289EEB55C1425FC07BA18542AFFD48E2
+        A1EFE0B398D04B5530E3504248D8AD49773707A17BC93249FEBF1012848A17FE
+        03B4BCBC82387E01826770A20922EF4C0114D4BB40F8CE995A927B003B1C6711
+        3DC06FCEF8709F1FC202DDE8560B20DFBA06A436DAD12323773C9A674EAFD189
+        5ACAC04F1CE895B7E77CF7288FD086E11BB4BF3E9500F2AC1E07DE787B918CE2
+        14F1AC299CED57D9F89F00491C520460C8AFE549765F2940FC5A726B0B887DB4
+        C3A512A0132F0474E3470113F15F01537129405EA3C3D30F137101288C130ED0
+        0D83B27111F01BDFF2B8F8872A024D925CA3F4E465811DC7FBAAF122403B2E00
+        55ACD3070EE91B8F199FD565E20000002574455874646174653A637265617465
+        00323032302D30342D30365431353A34383A30302B30303A3030954B63E70000
+        002574455874646174653A6D6F6469667900323032302D30342D30365431353A
+        34383A30302B30303A3030E416DB5B00000028744558747376673A626173652D
+        7572690066696C653A2F2F2F746D702F6D616769636B2D5A344C684E314B5AA6
+        1611D60000000049454E44AE426082}
+      PictureFocused.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000180000
+        00180806000000E0773DF80000000467414D410000B18F0BFC61050000000173
+        52474200AECE1CE900000006624B4744000000000000F943BB7F000000097048
+        597300000048000000480046C96B3E000000E94944415478DAED933B0AC24014
+        453385686FE38AFC55822E41B1D65641C10DD80B0A82AD1FD0C23DB8165B3F85
+        E311230CC9C48C336321F8E0F21E2F9973424844F0E5127F8194B24C5B9039E9
+        0A21A43701F0126D4D72E16A42DAAAC455D0A78D22EB31828E93007095560034
+        651E320F94CB47F6796B41085F920C694524675263B7B71200AAD056241BAE6E
+        8AA4C77C50E11F0934F0573D244DC033DD392381E66B51EB42EA087656021778
+        AAC015FE56E0039E28F005D70A8017691B1FF098C000DE00BE3585EB04A70478
+        EC0FB51548CD3D564F6E2AB806CF776E054F1338C363826FD4EF0BEEDB1B7819
+        79BD57990000002574455874646174653A63726561746500323032302D30342D
+        30365431353A34373A30382B30303A303057AF760D0000002574455874646174
+        653A6D6F6469667900323032302D30342D30365431353A34373A30382B30303A
+        303026F2CEB100000028744558747376673A626173652D7572690066696C653A
+        2F2F2F746D702F6D616769636B2D497337477544727450B87C50000000004945
+        4E44AE426082}
+      FontDown.Charset = DEFAULT_CHARSET
+      FontDown.Color = clWindow
+      FontDown.Height = -13
+      FontDown.Name = 'Segoe UI'
+      FontDown.Style = []
+      FontFocused.Charset = DEFAULT_CHARSET
+      FontFocused.Color = clWindow
+      FontFocused.Height = -13
+      FontFocused.Name = 'Segoe UI'
+      FontFocused.Style = []
+      FontDisabled.Charset = DEFAULT_CHARSET
+      FontDisabled.Color = clWindow
+      FontDisabled.Height = -13
+      FontDisabled.Name = 'Segoe UI'
+      FontDisabled.Style = []
+      Caption = 'Edit'
+      TabOrder = 0
+      Radius = 4
+      Spacing = 0
+      Alignment = paLeftJustify
+      PictureMarginLeft = 19
     end
   end
 end
