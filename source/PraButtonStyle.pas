@@ -17,7 +17,8 @@ uses
   System.UITypes,
   vcl.Controls,
   vcl.Graphics,
-  Winapi.Messages;
+  Winapi.Messages,
+  System.Math;
 
 type
   TPraAlignment = (paLeftJustify, paCenter);
@@ -546,12 +547,11 @@ begin
         RoundRect(X, Y, X + w, Y + h, Radius, Radius);
     end;
 
-    h := (ClientHeight - FPicture.Height) div 2;
-
     X := PictureMarginLeft;
     if FPictureCenter and (Caption = '') then
-      X := (ClientWidth - FPicture.Width) div 2;
+      X := (ClientWidth - MaxIntValue([FPicture.Width, FPictureFocused.Width, FPictureDisabled.Width])) div 2;
 
+    h := (ClientHeight - MaxIntValue([FPicture.Height, FPictureFocused.Height, FPictureDisabled.Height])) div 2;
     if not(Enabled) then
     begin
       if Assigned(PictureDisabled.Graphic) then
@@ -574,12 +574,12 @@ begin
       if Alignment = paCenter then
       begin
         if Assigned(Picture.Graphic) or (Assigned(PictureFocused.Graphic) and (FMouseEnter or Focused)) then
-          X := (ClientWidth - (FPicture.Width + PictureMarginLeft)) div 2
+          X := (ClientWidth - (MaxIntValue([FPicture.Width, FPictureFocused.Width, FPictureDisabled.Width]) + PictureMarginLeft)) div 2
         else
           X := (ClientWidth - Canvas.TextWidth(Caption)) div 2
       end
       else
-        X := FPicture.Width + PictureMarginLeft + FSpacing;
+        X := MaxIntValue([FPicture.Width, FPictureFocused.Width, FPictureDisabled.Width]) + PictureMarginLeft + FSpacing;
 
       Y := (ClientHeight - Canvas.TextHeight(Caption)) div 2;
       TextOut(X, Y, Caption);
