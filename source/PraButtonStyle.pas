@@ -10,7 +10,6 @@ interface
 
 uses
   vcl.buttons,
-  vcl.dialogs,
   Winapi.Windows,
   System.SysUtils,
   System.Classes,

@@ -1,19 +1,15 @@
-{******************************************************************************}
-{                                                                              }
-{                           pra components library 2020                        }
-{                   pauloalvis@hotmail.com | github.com/pauloalvis             }
-{                                                                              }
-{******************************************************************************}
+{ ****************************************************************************** }
+{ }
+{ pra components library 2020 }
+{ pauloalvis@hotmail.com | github.com/pauloalvis }
+{ }
+{ ****************************************************************************** }
 unit PraRegister;
 
 interface
 
 uses
-  System.SysUtils,
-  System.Classes,
-  Vcl.Controls,
-  Vcl.StdCtrls,
-  Vcl.ExtCtrls;
+  System.Classes;
 
 procedure Register;
 
