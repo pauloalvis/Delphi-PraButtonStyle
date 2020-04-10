@@ -125,6 +125,13 @@ type
     procedure DoMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
     function isPictureCenter: Boolean;
     procedure SetPictureCenter(const Value: Boolean);
+    function informedPicture: Boolean;
+
+    function GetPictureMarginLeft: SmallInt;
+    function GetPictureWidth: SmallInt;
+    function GetPictureHeight: SmallInt;
+    function GetSpacing: SmallInt;
+
   protected
     procedure DoKeyUp;
     procedure Paint; override;
@@ -440,6 +447,34 @@ begin
     result := false;
 end;
 
+function TPraButtonStyle.GetPictureHeight: SmallInt;
+begin
+  result := 0;
+  if informedPicture then
+    result := MaxIntValue([FPicture.Height, FPictureFocused.Height, FPictureDisabled.Height]);
+end;
+
+function TPraButtonStyle.GetPictureMarginLeft: SmallInt;
+begin
+  result := 0;
+  if informedPicture then
+    result := FPictureMarginLeft;
+end;
+
+function TPraButtonStyle.GetPictureWidth: SmallInt;
+begin
+  result := 0;
+  if informedPicture then
+    result := MaxIntValue([FPicture.Width, FPictureFocused.Width, FPictureDisabled.Width]);
+end;
+
+function TPraButtonStyle.GetSpacing: SmallInt;
+begin
+  result := 0;
+  if informedPicture then
+    result := FSpacing;
+end;
+
 function TPraButtonStyle.GetTabOrder: Integer;
 begin
   if Assigned(FFocusControl) then
@@ -454,6 +489,11 @@ begin
     result := FFocusControl.TabStop
   else
     result := false;
+end;
+
+function TPraButtonStyle.informedPicture: Boolean;
+begin
+  result := Assigned(FPicture.Graphic) or Assigned(FPictureFocused.Graphic) or Assigned(FPictureDisabled.Graphic);
 end;
 
 function TPraButtonStyle.IsClickOnEnter: Boolean;
@@ -546,11 +586,11 @@ begin
         RoundRect(X, Y, X + w, Y + h, Radius, Radius);
     end;
 
-    X := PictureMarginLeft;
+    X := GetPictureMarginLeft;
     if FPictureCenter and (Caption = '') then
-      X := (ClientWidth - MaxIntValue([FPicture.Width, FPictureFocused.Width, FPictureDisabled.Width])) div 2;
+      X := (ClientWidth - GetPictureWidth) div 2;
 
-    h := (ClientHeight - MaxIntValue([FPicture.Height, FPictureFocused.Height, FPictureDisabled.Height])) div 2;
+    h := (ClientHeight - GetPictureHeight) div 2;
     if not(Enabled) then
     begin
       if Assigned(PictureDisabled.Graphic) then
@@ -573,12 +613,12 @@ begin
       if Alignment = paCenter then
       begin
         if Assigned(Picture.Graphic) or (Assigned(PictureFocused.Graphic) and (FMouseEnter or Focused)) then
-          X := (ClientWidth - (MaxIntValue([FPicture.Width, FPictureFocused.Width, FPictureDisabled.Width]) + PictureMarginLeft)) div 2
+          X := (ClientWidth - (GetPictureWidth + PictureMarginLeft)) div 2
         else
           X := (ClientWidth - Canvas.TextWidth(Caption)) div 2
       end
       else
-        X := MaxIntValue([FPicture.Width, FPictureFocused.Width, FPictureDisabled.Width]) + PictureMarginLeft + FSpacing;
+        X := GetPictureWidth + PictureMarginLeft + GetSpacing;
 
       Y := (ClientHeight - Canvas.TextHeight(Caption)) div 2;
       TextOut(X, Y, Caption);
