@@ -1,6 +1,7 @@
 # Delphi-PraButtonStyle
-![sample](demo/demo1/demo1.gif)
+![sample 1](demo/demo1/demo1.gif)
 
+![sample 2](demo/demo2/Gravar_2020_04_11_23_43_41_231.gif)
 
 **Installation:**
   Add the folder source directory to the Library path in Delphi inside the Tools->Options menu. 
