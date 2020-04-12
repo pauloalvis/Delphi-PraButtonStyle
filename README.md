@@ -1,5 +1,5 @@
 # Delphi-PraButtonStyle
-![sample](demo/demo1.gif)
+![sample](demo/demo1/demo1.gif)
 
 
 **Installation:**
