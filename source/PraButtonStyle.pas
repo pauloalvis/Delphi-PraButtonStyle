@@ -155,7 +155,7 @@ type
     property Action;
     property Align;
     property Anchors;
-    property Cursor;
+    property Cursor default crHandPoint;
     property DragCursor;
     property DragKind;
     property DragMode;
@@ -230,6 +230,7 @@ begin
     PenFocused.Assign(TPraButtonStyle(Source).PenFocused);
     Font.Assign(TPraButtonStyle(Source).Font);
     FontFocused.Assign(TPraButtonStyle(Source).FontFocused);
+    FontDown.Assign(TPraButtonStyle(Source).FontDown);
     Radius := TPraButtonStyle(Source).Radius;
   end
   else
@@ -237,9 +238,20 @@ begin
 end;
 
 procedure TPraButtonStyle.ChangeScale(M, D: Integer; isDpiChange: Boolean);
+var
+  Flags: TScalingFlags;
 begin
   FPen.Width := MulDiv(FPen.Width, M, D);
-
+  //Scaling of other Fonts as current Font
+  if csLoading in ComponentState then
+    Flags := ScalingFlags else
+    Flags := DefaultScalingFlags;
+  if not ParentFont and (sfFont in Flags) then
+  begin
+    FFontDown.Height := MulDiv(FFontDown.Height, M, D);
+    FFontFocused.Height := MulDiv(FFontFocused.Height, M, D);
+    FFontDisabled.Height := MulDiv(FFontDisabled.Height, M, D);
+  end;
   inherited;
 end;
 
@@ -695,7 +707,7 @@ end;
 
 procedure TPraButtonStyle.SetFontFocused(const Value: TFont);
 begin
-  FFontFocused := Value;
+  FFontFocused.Assign(Value);
 end;
 
 procedure TPraButtonStyle.SetParent(AParent: TWinControl);
