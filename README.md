@@ -19,7 +19,7 @@
 
 ## Features
 [//]: # (Add the features of your project here:)
-This app features all the latest tools and practices in mobile development!
+
 
 - **Delphi-VCL** — Tested on the latest delphi.
 
