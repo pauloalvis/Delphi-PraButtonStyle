@@ -13,12 +13,6 @@
 </p>
 
 <p align="center">
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License MIT">
-  </a>
-</p>
-
-<p align="center">
   <img width="600" height="400" src="demo/demo1/demo1.gif">
 </p>
 
