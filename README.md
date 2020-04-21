@@ -18,8 +18,13 @@
   </a>
 </p>
 
-![sample 1](demo/demo1/demo1.gif)
-![sample 2](demo/demo2/Gravar_2020_04_11_23_43_41_231.gif)
+<p align="center">
+  <img width="600" height="400" src="demo/demo1/demo1.gif">
+</p>
+
+<p align="center">
+  <img width="600" height="400" src="demo/demo2/Gravar_2020_04_11_23_43_41_231.gif">
+</p>
 
 <hr />
 
