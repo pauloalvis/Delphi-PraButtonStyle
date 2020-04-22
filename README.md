@@ -4,7 +4,7 @@
 <br>
 </h1>
 
-<p align="center">Button with very attractive layout, standard bootstrap </p>
+<p align="center">Button with very attractive layout, standard bootstrap to Delphi VCL </p>
 
 <p align="center">
   <a href="https://opensource.org/licenses/MIT">
