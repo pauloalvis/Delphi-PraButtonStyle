@@ -70,6 +70,10 @@
 
 **ClickOnEnter:** Performs the click when pressing enter;
 
+**Style:** Select standard bootstrap ready styles.
+
+**StyleOutline:** Inverts colors, used when selecting ready styles.
+
 ## Getting started
 
 Add the folder **source** directory to the Library path in Delphi inside the Tools->Options menu. 
