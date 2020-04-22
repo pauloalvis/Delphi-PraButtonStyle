@@ -22,6 +22,7 @@ uses
 type
   TPraAlignment = (paLeftJustify, paCenter);
   TPraButtonStyleType = (stRoundRect, stRectangle);
+  TPraButtonStyleStyle = (bsCustom, bsPrimary, bsSecondary, bsSuccess, bsDanger, bsWarning, bsInfo, bsLight, bsDark);
 
   TPraButtonStyle = class;
 
@@ -36,6 +37,21 @@ type
     constructor Create(AOwner: TComponent; AGraphicControl: TPraButtonStyle); reintroduce;
     property TabStop default false;
     property TabOrder;
+  end;
+
+  TPraButtonChangeFont = procedure(const Value: Boolean) of Object;
+
+  TPraButtonFont = class(TFont)
+  private
+    FCopyOfFont: Boolean;
+    FonChange: TPraButtonChangeFont;
+
+    function IsCopyOfFont: Boolean;
+    procedure SetCopyOfFont(const Value: Boolean);
+  published
+    property CopyOfFont: Boolean read FCopyOfFont write SetCopyOfFont stored IsCopyOfFont default false;
+  public
+    property onChange: TPraButtonChangeFont read FonChange write FonChange;
   end;
 
   TPraButtonStyle = class(TGraphicControl)
@@ -59,9 +75,9 @@ type
     FPictureDisabled: TPicture;
     FPictureMarginLeft: SmallInt;
 
-    FFontDown: TFont;
-    FFontFocused: TFont;
-    FFontDisabled: TFont;
+    FFontDown: TPraButtonFont;
+    FFontFocused: TPraButtonFont;
+    FFontDisabled: TPraButtonFont;
 
     FCaption: TCaption;
     FShowCaption: Boolean;
@@ -74,6 +90,8 @@ type
 
     FShape: TPraButtonStyleType;
     FPictureCenter: Boolean;
+    FStyle: TPraButtonStyleStyle;
+    FStyleOutline: Boolean;
 
     procedure SetPen(Value: TPen);
     procedure SetPenDown(const Value: TPen);
@@ -90,9 +108,9 @@ type
     procedure SetPictureDisabled(const Value: TPicture);
     procedure SetPictureMarginLeft(const Value: SmallInt);
 
-    procedure SetFontDown(const Value: TFont);
-    procedure SetFontFocused(const Value: TFont);
-    procedure SetFontDisabled(const Value: TFont);
+    procedure SetFontDown(const Value: TPraButtonFont);
+    procedure SetFontFocused(const Value: TPraButtonFont);
+    procedure SetFontDisabled(const Value: TPraButtonFont);
 
     function IsRadius: Boolean;
     function IsSpacing: Boolean;
@@ -131,6 +149,10 @@ type
     function GetPictureWidth: SmallInt;
     function GetPictureHeight: SmallInt;
     function GetSpacing: SmallInt;
+    function IsStoredStyle: Boolean;
+    procedure SetStyle(const Value: TPraButtonStyleStyle);
+    function IsStyleOutline: Boolean;
+    procedure SetStyleOutline(const Value: Boolean);
 
   protected
     procedure DoKeyUp;
@@ -181,6 +203,7 @@ type
     property OnStartDrag;
     property OnClick;
     property Font;
+    property ParentFont default true;
 
     property Pen: TPen read FPen write SetPen;
     property PenDown: TPen read FPenDown write SetPenDown;
@@ -196,14 +219,14 @@ type
     property PictureFocused: TPicture read FPictureFocused write SetPictureFocused;
     property PictureDisabled: TPicture read FPictureDisabled write SetPictureDisabled;
 
-    property FontDown: TFont read FFontDown Write SetFontDown;
-    property FontFocused: TFont read FFontFocused Write SetFontFocused;
-    property FontDisabled: TFont read FFontDisabled Write SetFontDisabled;
+    property FontDown: TPraButtonFont read FFontDown Write SetFontDown;
+    property FontFocused: TPraButtonFont read FFontFocused Write SetFontFocused;
+    property FontDisabled: TPraButtonFont read FFontDisabled Write SetFontDisabled;
 
     property Caption: TCaption read FCaption write SetCaption;
     property TabOrder: Integer read GetTabOrder write SetTabOrder;
     property TabStop: Boolean read GetTabStop write SetTabStop default false;
-    property Radius: SmallInt read FRadius write SetRadius stored IsRadius default 6;
+    property Radius: SmallInt read FRadius write SetRadius stored IsRadius default 4;
     property Shape: TPraButtonStyleType read FShape write SetShape default stRoundRect;
     property Spacing: SmallInt read FSpacing write SetSpacing stored IsSpacing default 3;
     property ShowCaption: Boolean read FShowCaption write SetShowCaption stored IsShowCaption default true;
@@ -212,7 +235,15 @@ type
     property PictureCenter: Boolean read FPictureCenter write SetPictureCenter stored isPictureCenter default false;
     property PictureMarginLeft: SmallInt read FPictureMarginLeft write SetPictureMarginLeft stored IsPictureMarginLeft default 3;
 
+    property Style: TPraButtonStyleStyle read FStyle write SetStyle stored IsStoredStyle;
+    property StyleOutline: Boolean read FStyleOutline write SetStyleOutline stored IsStyleOutline default false;
+
     procedure StyleChanged(Sender: TObject);
+    procedure StyleOutlineConfig;
+
+    procedure FontDownCopyOfFont(const AValue: Boolean);
+    procedure FontFocusedCopyOfFont(const AValue: Boolean);
+    procedure FontDisabledCopyOfFont(const AValue: Boolean);
   end;
 
 implementation
@@ -242,9 +273,10 @@ var
   Flags: TScalingFlags;
 begin
   FPen.Width := MulDiv(FPen.Width, M, D);
-  //Scaling of other Fonts as current Font
+  // Scaling of other Fonts as current Font
   if csLoading in ComponentState then
-    Flags := ScalingFlags else
+    Flags := ScalingFlags
+  else
     Flags := DefaultScalingFlags;
   if not ParentFont and (sfFont in Flags) then
   begin
@@ -282,6 +314,24 @@ begin
   invalidate;
 end;
 
+procedure TPraButtonStyle.FontDisabledCopyOfFont(const AValue: Boolean);
+begin
+  if AValue then
+    FFontDisabled.Assign(Font);
+end;
+
+procedure TPraButtonStyle.FontDownCopyOfFont(const AValue: Boolean);
+begin
+  if AValue then
+    FFontDown.Assign(Font);
+end;
+
+procedure TPraButtonStyle.FontFocusedCopyOfFont(const AValue: Boolean);
+begin
+  if AValue then
+    FFontFocused.Assign(Font);
+end;
+
 constructor TPraButtonStyle.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
@@ -289,63 +339,67 @@ begin
   FFocusControl := nil;
   CreateFocusControl(nil, TWinControl(AOwner));
 
-  Self.Cursor := crHandPoint;
+  Cursor := crHandPoint;
   ControlStyle := ControlStyle + [csReplicatable];
+  ParentFont := true;
 
   Width := 75;
   Height := 25;
 
   // Pen
   FPen := TPen.Create;
-  FPen.OnChange := StyleChanged;
+  FPen.onChange := StyleChanged;
   // PenDown
   FPenDown := TPen.Create;
-  FPenDown.OnChange := StyleChanged;
+  FPenDown.onChange := StyleChanged;
   // PenFocused
   FPenFocused := TPen.Create;
-  FPenFocused.OnChange := StyleChanged;
+  FPenFocused.onChange := StyleChanged;
   // PenDisabled
   FPenDisabled := TPen.Create;
-  FPenDisabled.OnChange := StyleChanged;
+  FPenDisabled.onChange := StyleChanged;
 
   // Brush
   FBrush := TBrush.Create;
   FBrush.Color := clWhite;
-  FBrush.OnChange := StyleChanged;
+  FBrush.onChange := StyleChanged;
   // BrushDown
   FBrushDown := TBrush.Create;
   FBrushDown.Color := $00EBEBEB;
-  FBrushDown.OnChange := StyleChanged;
+  FBrushDown.onChange := StyleChanged;
   // BrushFocused
   FBrushFocused := TBrush.Create;
   FBrushFocused.Color := $00EBEBEB;
-  FBrushFocused.OnChange := StyleChanged;
+  FBrushFocused.onChange := StyleChanged;
   // BrushDisabled
   FBrushDisabled := TBrush.Create;
   FBrushDisabled.Color := $00EBEBEB;
-  FBrushDisabled.OnChange := StyleChanged;
+  FBrushDisabled.onChange := StyleChanged;
 
   // Picture
   FPicture := TPicture.Create;
-  FPicture.OnChange := StyleChanged;
+  FPicture.onChange := StyleChanged;
   // PictureFocused
   FPictureFocused := TPicture.Create;
-  FPictureFocused.OnChange := StyleChanged;
+  FPictureFocused.onChange := StyleChanged;
   // PictureDisabled
   FPictureDisabled := TPicture.Create;
-  FPictureDisabled.OnChange := StyleChanged;
+  FPictureDisabled.onChange := StyleChanged;
 
   // Font
   Self.Font.Name := 'Tahoma';
   // FontDown
-  FFontDown := TFont.Create;
+  FFontDown := TPraButtonFont.Create;
   FFontDown.Assign(Self.Font);
+  FFontDown.onChange := FontDownCopyOfFont;
   // FontFocused
-  FFontFocused := TFont.Create;
+  FFontFocused := TPraButtonFont.Create;
   FFontFocused.Assign(Self.Font);
+  FFontFocused.onChange := FontFocusedCopyOfFont;
   // FontDisabled
-  FFontDisabled := TFont.Create;
+  FFontDisabled := TPraButtonFont.Create;
   FFontDisabled.Assign(Self.Font);
+  FFontDisabled.onChange := FontDisabledCopyOfFont;
 
   FRadius := 4;
   FSpacing := 3;
@@ -361,6 +415,9 @@ begin
 
   OnMouseDown := DoMouseDown;
   OnMouseUp := DoMouseUp;
+
+  Style := bsCustom;
+  StyleOutline := false;
 end;
 
 procedure TPraButtonStyle.CreateFocusControl(AOwner: TComponent; AParent: TWinControl);
@@ -513,6 +570,11 @@ begin
   result := FClickOnEnter <> true;
 end;
 
+function TPraButtonStyle.IsStyleOutline: Boolean;
+begin
+  result := StyleOutline <> false;
+end;
+
 function TPraButtonStyle.isPictureCenter: Boolean;
 begin
   result := PictureCenter <> false;
@@ -541,6 +603,11 @@ end;
 function TPraButtonStyle.IsStoredAlignment: Boolean;
 begin
   result := Alignment <> paCenter;
+end;
+
+function TPraButtonStyle.IsStoredStyle: Boolean;
+begin
+  result := Style <> bsCustom;
 end;
 
 procedure TPraButtonStyle.Paint;
@@ -695,19 +762,28 @@ begin
       FFocusControl.SetFocus;
 end;
 
-procedure TPraButtonStyle.SetFontDisabled(const Value: TFont);
+procedure TPraButtonStyle.SetFontDisabled(const Value: TPraButtonFont);
 begin
   FFontDisabled.Assign(Value);
 end;
 
-procedure TPraButtonStyle.SetFontDown(const Value: TFont);
+procedure TPraButtonStyle.SetFontDown(const Value: TPraButtonFont);
 begin
   FFontDown.Assign(Value);
 end;
 
-procedure TPraButtonStyle.SetFontFocused(const Value: TFont);
+procedure TPraButtonStyle.SetFontFocused(const Value: TPraButtonFont);
 begin
   FFontFocused.Assign(Value);
+end;
+
+procedure TPraButtonStyle.SetStyleOutline(const Value: Boolean);
+begin
+  if FStyleOutline <> Value then
+  begin
+    FStyleOutline := Value;
+    SetStyle(FStyle);
+  end;
 end;
 
 procedure TPraButtonStyle.SetParent(AParent: TWinControl);
@@ -809,6 +885,173 @@ begin
   end;
 end;
 
+procedure TPraButtonStyle.SetStyle(const Value: TPraButtonStyleStyle);
+  procedure PenConfigurationCommon;
+  begin
+    Pen.Style := psClear;
+    PenFocused.Style := psClear;
+    PenDisabled.Style := psClear;
+    PenDown.Style := psSolid;
+    PenDown.Width := 3;
+  end;
+
+  procedure FontConfigurationCommon;
+  begin
+    Font.Name := 'Segoe IU';
+    Font.Style := [fsBold];
+    Font.Size := 10;
+    //
+    FontDown.Name := 'Segoe IU';
+    FontDown.Style := [fsBold];
+    FontDown.Size := 10;
+    //
+    FontFocused.Name := 'Segoe IU';
+    FontFocused.Style := [fsBold];
+    FontFocused.Size := 10;
+    //
+    FontDisabled.Name := 'Segoe IU';
+    FontDisabled.Style := [fsBold];
+    FontDisabled.Size := 10;
+  end;
+
+  procedure FontColorConfigurationCommon(const AValue: TColor);
+  begin
+    Font.Color := AValue;
+    FontDown.Color := AValue;
+    FontFocused.Color := AValue;
+    FontDisabled.Color := AValue;
+  end;
+
+begin
+  Self.FStyle := Value;
+
+  case Self.FStyle of
+    bsPrimary:
+      begin
+        Brush.Color := $00FE6F2C;
+        BrushFocused.Color := $00D85F24;
+        BrushDown.Color := $00D85F24;
+
+        PenDown.Color := $00FFB795;
+
+        PenConfigurationCommon;
+        FontConfigurationCommon;
+        FontColorConfigurationCommon(clWhite);
+
+        BrushDisabled.Color := $00FFA95A;
+        FontDisabled.Color := $00FFF0E2;
+      end;
+    bsSecondary:
+      begin
+        Brush.Color := $007D756C;
+        BrushFocused.Color := $0068625A;
+        BrushDown.Color := $0068625A;
+
+        PenDown.Color := $00BEB9B5;
+
+        PenConfigurationCommon;
+        FontConfigurationCommon;
+        FontColorConfigurationCommon(clWhite);
+
+        BrushDisabled.Color := $00AEA8A2;
+        FontDisabled.Color := $00FFF0E2;
+      end;
+    bsSuccess:
+      begin
+        Brush.Color := $0045AA29;
+        BrushFocused.Color := $00388A22;
+        BrushDown.Color := $00388A22;
+
+        PenDown.Color := $00A2D494;
+
+        PenConfigurationCommon;
+        FontConfigurationCommon;
+        FontColorConfigurationCommon(clWhite);
+
+        BrushDisabled.Color := $0089DD71;
+        FontDisabled.Color := $00FFF0E2;
+      end;
+    bsDanger:
+      begin
+        Brush.Color := $004737DA;
+        BrushFocused.Color := $003626C6;
+        BrushDown.Color := $003626C6;
+
+        PenDown.Color := $00A39BEC;
+
+        PenConfigurationCommon;
+        FontConfigurationCommon;
+        FontColorConfigurationCommon(clWhite);
+
+        BrushDisabled.Color := $00A9A2EE;
+        FontDisabled.Color := $00FFF0E2;
+      end;
+    bsWarning:
+      begin
+        Brush.Color := $0016C5FC;
+        BrushFocused.Color := $000FACDE;
+        BrushDown.Color := $000FACDE;
+
+        PenDown.Color := $008AE2FE;
+
+        PenConfigurationCommon;
+        FontConfigurationCommon;
+        FontColorConfigurationCommon(clWhite);
+
+        BrushDisabled.Color := $0085E0FE;
+        FontDisabled.Color := $00949494;
+      end;
+    bsInfo:
+      begin
+        Brush.Color := $00B8A027;
+        BrushFocused.Color := $00978420;
+        BrushDown.Color := $00978420;
+
+        PenDown.Color := $00DBD093;
+
+        PenConfigurationCommon;
+        FontConfigurationCommon;
+        FontColorConfigurationCommon(clWhite);
+
+        BrushDisabled.Color := $00E2D07A;
+        FontDisabled.Color := $00FFF0E2;
+      end;
+    bsLight:
+      begin
+        Brush.Color := $00FAF9F8;
+        BrushFocused.Color := $00EAE6E2;
+        BrushDown.Color := $00EAE6E2;
+
+        PenDown.Color := $00E5E0DA;
+
+        PenConfigurationCommon;
+        FontConfigurationCommon;
+        FontColorConfigurationCommon(clBlack);
+
+        BrushDisabled.Color := $00CEC5BB;
+        FontDisabled.Color := $00FFF0E2;
+      end;
+    bsDark:
+      begin
+        Brush.Color := $00403A34;
+        BrushFocused.Color := $002B2723;
+        BrushDown.Color := $002B2723;
+
+        PenDown.Color := $009F9C99;
+
+        PenConfigurationCommon;
+        FontConfigurationCommon;
+        FontColorConfigurationCommon(clWhite);
+
+        BrushDisabled.Color := $0094877A;
+        FontDisabled.Color := $00FFF0E2;
+      end;
+  end;
+
+  if StyleOutline and (FStyle <> bsCustom) then
+    StyleOutlineConfig;
+end;
+
 procedure TPraButtonStyle.SetTabOrder(const Value: Integer);
 begin
   if Assigned(FFocusControl) then
@@ -826,6 +1069,20 @@ begin
   invalidate;
 end;
 
+procedure TPraButtonStyle.StyleOutlineConfig;
+var
+  lBrushColor: TColor;
+begin
+  lBrushColor := Brush.Color;
+  Brush.Color := Font.Color;
+
+  Font.Color := lBrushColor;
+
+  Pen.Style := psSolid;
+  Pen.Color := lBrushColor;
+  Pen.Width := 1;
+end;
+
 procedure TPraButtonStyle.WMEraseBkgnd(var Message: TWMEraseBkGnd);
 begin
   message.result := 1;
@@ -835,7 +1092,7 @@ constructor TFocusControl.Create(AOwner: TComponent; AGraphicControl: TPraButton
 begin
   inherited Create(AOwner);
 
-  Assert(Assigned(AGraphicControl), 'N„o È possÌvel criar um FocusControl com GraphicControl n„o atribuÌdo.');
+  Assert(Assigned(AGraphicControl), 'N√£o √© poss√≠vel criar um FocusControl com GraphicControl n√£o atribu√≠do.');
 
   FGraphicControl := AGraphicControl;
   Self.TabStop := false;
@@ -872,6 +1129,20 @@ begin
         if Assigned(FGraphicControl) then
           FGraphicControl.Repaint;
       end;
+  end;
+end;
+
+function TPraButtonFont.IsCopyOfFont: Boolean;
+begin
+  result := CopyOfFont <> false;
+end;
+
+procedure TPraButtonFont.SetCopyOfFont(const Value: Boolean);
+begin
+  if FCopyOfFont <> Value then
+  begin
+    FCopyOfFont := Value;
+    onChange(Value);
   end;
 end;
 
