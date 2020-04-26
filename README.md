@@ -24,6 +24,10 @@
   <img width="600" height="400" src="demo/demo3/gif_animation.gif">
 </p>
 
+<p align="center">
+  <img width="600" height="400" src="demo/demo4/demo4.gif">
+</p>
+
 <hr />
 
 ## Features
@@ -73,6 +77,8 @@
 **Style:** Select standard bootstrap ready styles.
 
 **StyleOutline:** Inverts colors, used when selecting ready styles.
+
+**TemplateStyle:** Templates pre-configured
 
 ## Getting started
 
