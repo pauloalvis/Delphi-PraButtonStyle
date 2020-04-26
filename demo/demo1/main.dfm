@@ -10,7 +10,7 @@ object uMain: TuMain
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False 
+  OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -27,12 +27,12 @@ object uMain: TuMain
       Top = 40
       Width = 97
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindow
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Color = 13476012
       PenDown.Width = 3
@@ -59,19 +59,18 @@ object uMain: TuMain
       FontDisabled.Style = [fsBold]
       Caption = 'Primary'
       TabOrder = 1
-      Radius = 4
     end
     object PraButtonStyle2: TPraButtonStyle
       Left = 135
       Top = 40
       Width = 97
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindow
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Color = 6935040
       PenDown.Width = 3
@@ -97,20 +96,19 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = [fsBold]
       Caption = 'Success'
-      TabOrder = 3
-      Radius = 4
+      TabOrder = 2
     end
     object PraButtonStyle3: TPraButtonStyle
       Left = 238
       Top = 40
       Width = 97
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindow
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Color = 8421631
       PenDown.Width = 3
@@ -136,20 +134,19 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = [fsBold]
       Caption = 'Danger'
-      TabOrder = 4
-      Radius = 4
+      TabOrder = 3
     end
     object PraButtonStyle4: TPraButtonStyle
       Left = 341
       Top = 40
       Width = 97
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 1644825
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Color = 8454143
       PenDown.Width = 3
@@ -176,19 +173,18 @@ object uMain: TuMain
       FontDisabled.Style = [fsBold]
       Caption = 'Warning'
       TabOrder = 5
-      Radius = 4
     end
     object PraButtonStyle5: TPraButtonStyle
       Left = 444
       Top = 40
       Width = 97
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindow
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = [fsBold]
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Color = 15655808
       PenDown.Width = 3
@@ -215,19 +211,18 @@ object uMain: TuMain
       FontDisabled.Style = [fsBold]
       Caption = 'Info'
       TabOrder = 6
-      Radius = 4
     end
     object PraButtonStyle6: TPraButtonStyle
       Left = 32
       Top = 96
       Width = 97
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11681894
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 11681894
       PenDown.Color = 13476012
       PenDown.Width = 3
@@ -253,20 +248,19 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Primary'
-      TabOrder = 8
-      Radius = 4
+      TabOrder = 7
     end
     object PraButtonStyle7: TPraButtonStyle
       Left = 135
       Top = 96
       Width = 97
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 8572928
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 8572928
       PenDown.Color = 6935040
       PenDown.Width = 3
@@ -292,20 +286,19 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Success'
-      TabOrder = 9
-      Radius = 4
+      TabOrder = 8
     end
     object PraButtonStyle8: TPraButtonStyle
       Left = 238
       Top = 96
       Width = 97
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 1186551
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 3620600
       PenDown.Color = 8421631
       PenDown.Width = 3
@@ -331,20 +324,19 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Danger'
-      TabOrder = 11
-      Radius = 4
+      TabOrder = 10
     end
     object PraButtonStyle9: TPraButtonStyle
       Left = 341
       Top = 96
       Width = 97
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 1094655
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 3588095
       PenDown.Color = 8454143
       PenDown.Width = 3
@@ -370,20 +362,19 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Warning'
-      TabOrder = 2
-      Radius = 4
+      TabOrder = 4
     end
     object PraButtonStyle10: TPraButtonStyle
       Left = 444
       Top = 96
       Width = 97
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11246871
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 13483036
       PenDown.Color = 15655808
       PenDown.Width = 3
@@ -409,20 +400,19 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Info'
-      TabOrder = 7
-      Radius = 4
+      TabOrder = 9
     end
     object PraButtonStyle11: TPraButtonStyle
       Left = 32
       Top = 151
       Width = 41
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11681894
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 10311483
       PenDown.Color = 13476012
       PenDown.Width = 3
@@ -504,8 +494,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 13
-      Radius = 4
+      TabOrder = 11
       Alignment = paLeftJustify
       PictureCenter = True
     end
@@ -514,12 +503,12 @@ object uMain: TuMain
       Top = 151
       Width = 41
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11681894
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 2567653
       PenDown.Color = 9409265
       PenDown.Width = 3
@@ -588,8 +577,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 14
-      Radius = 4
+      TabOrder = 13
       PictureCenter = True
     end
     object PraButtonStyle13: TPraButtonStyle
@@ -597,12 +585,12 @@ object uMain: TuMain
       Top = 151
       Width = 41
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11681894
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 14789164
       PenDown.Color = 15783577
       PenDown.Width = 3
@@ -681,7 +669,6 @@ object uMain: TuMain
       FontDisabled.Style = []
       Caption = ''
       TabOrder = 15
-      Radius = 4
       PictureCenter = True
     end
     object PraButtonStyle14: TPraButtonStyle
@@ -689,12 +676,12 @@ object uMain: TuMain
       Top = 151
       Width = 41
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 11681894
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 11892481
       PenDown.Color = 16697703
       PenDown.Width = 3
@@ -764,7 +751,6 @@ object uMain: TuMain
       FontDisabled.Style = []
       Caption = ''
       TabOrder = 16
-      Radius = 4
       PictureCenter = True
     end
     object Label1: TLabel
@@ -783,18 +769,20 @@ object uMain: TuMain
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+      ExplicitLeft = 341
+      ExplicitWidth = 223
     end
     object PraButtonStyle16: TPraButtonStyle
       Left = 32
       Top = 203
       Width = 93
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 8572928
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 8572928
       PenDown.Color = 6935040
       PenDown.Width = 3
@@ -853,8 +841,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Save'
-      TabOrder = 10
-      Radius = 4
+      TabOrder = 12
       Alignment = paLeftJustify
       PictureMarginLeft = 17
     end
@@ -863,12 +850,12 @@ object uMain: TuMain
       Top = 203
       Width = 93
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 1186551
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 3620600
       PenDown.Color = 8421631
       PenDown.Width = 3
@@ -922,8 +909,7 @@ object uMain: TuMain
       FontDisabled.Name = 'Segoe UI'
       FontDisabled.Style = []
       Caption = 'Delete'
-      TabOrder = 12
-      Radius = 4
+      TabOrder = 14
       Alignment = paLeftJustify
       PictureMarginLeft = 8
     end
@@ -932,12 +918,12 @@ object uMain: TuMain
       Top = 203
       Width = 93
       Height = 41
-      Cursor = crHandPoint
       Font.Charset = DEFAULT_CHARSET
       Font.Color = 1094655
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
       Pen.Color = 3588095
       PenDown.Color = 8454143
       PenDown.Width = 3
@@ -1001,7 +987,6 @@ object uMain: TuMain
       FontDisabled.Style = []
       Caption = 'Edit'
       TabOrder = 0
-      Radius = 4
       Spacing = 0
       Alignment = paLeftJustify
       PictureMarginLeft = 19

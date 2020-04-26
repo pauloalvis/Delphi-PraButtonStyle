@@ -23,7 +23,6 @@ object Form1: TForm1
     Align = alLeft
     Brush.Color = 15066597
     Pen.Style = psClear
-    ExplicitLeft = 204
   end
   object svMenu: TSplitView
     Left = 0
@@ -42,7 +41,6 @@ object Form1: TForm1
       Top = 62
       Width = 200
       Height = 41
-      Cursor = crHandPoint
       Hint = 'Utils'
       Margins.Left = 0
       Margins.Right = 0
@@ -54,6 +52,7 @@ object Form1: TForm1
       Font.Height = -15
       Font.Name = 'Roboto'
       Font.Style = []
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Style = psClear
       PenFocused.Style = psClear
@@ -122,14 +121,10 @@ object Form1: TForm1
       FontDisabled.Style = []
       Caption = 'Utils'
       TabOrder = 1
-      Radius = 4
       Shape = stRectangle
       Spacing = 12
       Alignment = paLeftJustify
       PictureMarginLeft = 11
-      ExplicitLeft = -3
-      ExplicitTop = 107
-      ExplicitWidth = 50
     end
     object PraButtonStyle3: TPraButtonStyle
       AlignWithMargins = True
@@ -137,7 +132,6 @@ object Form1: TForm1
       Top = 109
       Width = 200
       Height = 41
-      Cursor = crHandPoint
       Hint = 'Documentation'
       Margins.Left = 0
       Margins.Right = 0
@@ -149,6 +143,7 @@ object Form1: TForm1
       Font.Height = -15
       Font.Name = 'Roboto'
       Font.Style = []
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Style = psClear
       PenFocused.Style = psClear
@@ -207,14 +202,11 @@ object Form1: TForm1
       FontDisabled.Name = 'Roboto'
       FontDisabled.Style = []
       Caption = 'Documentation'
-      TabOrder = 3
-      Radius = 4
+      TabOrder = 2
       Shape = stRectangle
       Spacing = 12
       Alignment = paLeftJustify
       PictureMarginLeft = 11
-      ExplicitTop = 60
-      ExplicitWidth = 204
     end
     object PraButtonStyle4: TPraButtonStyle
       AlignWithMargins = True
@@ -222,7 +214,6 @@ object Form1: TForm1
       Top = 15
       Width = 200
       Height = 41
-      Cursor = crHandPoint
       Hint = 'Dashboard'
       Margins.Left = 0
       Margins.Right = 0
@@ -234,6 +225,7 @@ object Form1: TForm1
       Font.Height = -15
       Font.Name = 'Roboto'
       Font.Style = []
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Style = psClear
       PenFocused.Style = psClear
@@ -291,13 +283,10 @@ object Form1: TForm1
       FontDisabled.Style = []
       Caption = 'Dashboard'
       TabOrder = 4
-      Radius = 4
       Shape = stRectangle
       Spacing = 12
       Alignment = paLeftJustify
       PictureMarginLeft = 11
-      ExplicitTop = 60
-      ExplicitWidth = 204
     end
     object PraButtonStyle8: TPraButtonStyle
       AlignWithMargins = True
@@ -305,7 +294,6 @@ object Form1: TForm1
       Top = 348
       Width = 200
       Height = 41
-      Cursor = crHandPoint
       Hint = 'Close'
       Margins.Left = 0
       Margins.Right = 0
@@ -319,6 +307,7 @@ object Form1: TForm1
       Font.Height = -15
       Font.Name = 'Roboto'
       Font.Style = []
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Style = psClear
       PenFocused.Style = psClear
@@ -390,14 +379,11 @@ object Form1: TForm1
       FontDisabled.Name = 'Roboto'
       FontDisabled.Style = []
       Caption = 'Close'
-      TabOrder = 2
-      Radius = 4
+      TabOrder = 3
       Shape = stRectangle
       Spacing = 12
       Alignment = paLeftJustify
       PictureMarginLeft = 11
-      ExplicitLeft = -3
-      ExplicitTop = 355
     end
     object Panel2: TPanel
       Left = 0
@@ -452,13 +438,13 @@ object Form1: TForm1
       Top = 3
       Width = 41
       Height = 35
-      Cursor = crHandPoint
       Align = alRight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Style = psClear
       PenFocused.Style = psClear
@@ -501,11 +487,8 @@ object Form1: TForm1
       FontDisabled.Name = 'Tahoma'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 4
-      Radius = 4
+      TabOrder = 1
       PictureCenter = True
-      ExplicitLeft = 299
-      ExplicitTop = -2
     end
     object PraButtonStyle5: TPraButtonStyle
       AlignWithMargins = True
@@ -513,13 +496,13 @@ object Form1: TForm1
       Top = 3
       Width = 41
       Height = 35
-      Cursor = crHandPoint
       Align = alRight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Style = psClear
       PenFocused.Style = psClear
@@ -562,10 +545,7 @@ object Form1: TForm1
       FontDisabled.Style = []
       Caption = ''
       TabOrder = 3
-      Radius = 4
       PictureCenter = True
-      ExplicitLeft = 299
-      ExplicitTop = -2
     end
     object PraButtonStyle6: TPraButtonStyle
       AlignWithMargins = True
@@ -573,13 +553,13 @@ object Form1: TForm1
       Top = 3
       Width = 41
       Height = 35
-      Cursor = crHandPoint
       Align = alRight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Style = psClear
       PenFocused.Style = psClear
@@ -627,11 +607,8 @@ object Form1: TForm1
       FontDisabled.Name = 'Tahoma'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 2
-      Radius = 4
+      TabOrder = 4
       PictureCenter = True
-      ExplicitLeft = 299
-      ExplicitTop = -2
     end
     object PraButtonStyle7: TPraButtonStyle
       AlignWithMargins = True
@@ -639,7 +616,6 @@ object Form1: TForm1
       Top = 3
       Width = 41
       Height = 35
-      Cursor = crHandPoint
       Align = alLeft
       OnClick = PraButtonStyle2Click
       Font.Charset = DEFAULT_CHARSET
@@ -647,6 +623,7 @@ object Form1: TForm1
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
+      ParentFont = False
       Pen.Style = psClear
       PenDown.Style = psClear
       PenFocused.Style = psClear
@@ -683,11 +660,8 @@ object Form1: TForm1
       FontDisabled.Name = 'Tahoma'
       FontDisabled.Style = []
       Caption = ''
-      TabOrder = 1
-      Radius = 4
+      TabOrder = 2
       PictureCenter = True
-      ExplicitLeft = 299
-      ExplicitTop = -2
     end
     object Panel4: TPanel
       Left = 0
@@ -703,8 +677,6 @@ object Form1: TForm1
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
-      ExplicitLeft = 6
-      ExplicitTop = -6
       object Image1: TImage
         AlignWithMargins = True
         Left = 6
@@ -751,7 +723,6 @@ object Form1: TForm1
           2D30342D31325430323A32393A33342B30303A30302A4A393C00000028744558
           747376673A626173652D7572690066696C653A2F2F2F746D702F6D616769636B
           2D51496B53396E5563A0D7460D0000000049454E44AE426082}
-        ExplicitLeft = 10
       end
       object Label1: TLabel
         Left = 51

@@ -1,6 +1,7 @@
 package pracomponents;
 
 {$R *.res}
+{$R *.dres}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
@@ -30,12 +31,13 @@ package pracomponents;
 requires
   rtl,
   vcl,
-  dbrtl,
-  vcldb;
+  designide;
 
 contains
   PraRegister in '..\source\commom\PraRegister.pas',
-  PraButtonStyle in '..\source\PraButtonStyle.pas';
+  PraButtonStyle in '..\source\PraButtonStyle.pas',
+  PraConsts in '..\source\commom\PraConsts.pas',
+  PraAbout in '..\source\commom\view\PraAbout.pas' {FPraViewAbout};
 
 end.
 

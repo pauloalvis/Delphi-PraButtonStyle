@@ -4,8 +4,13 @@ interface
 
 uses
   System.Classes,
-  Vcl.Controls, Vcl.Forms, Vcl.ExtCtrls, Vcl.WinXCtrls,
-  PraButtonStyle, Vcl.StdCtrls, Vcl.Imaging.pngimage;
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.ExtCtrls,
+  Vcl.WinXCtrls,
+  PraButtonStyle,
+  Vcl.StdCtrls,
+  Vcl.Imaging.pngimage;
 
 type
   TForm1 = class(TForm)

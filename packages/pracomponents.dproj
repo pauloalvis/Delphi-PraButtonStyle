@@ -64,6 +64,12 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
@@ -119,6 +125,8 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -126,16 +134,132 @@
         <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+    </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
         <DCCReference Include="vcl.dcp"/>
-        <DCCReference Include="dbrtl.dcp"/>
-        <DCCReference Include="vcldb.dcp"/>
+        <DCCReference Include="designide.dcp"/>
         <DCCReference Include="..\source\commom\PraRegister.pas"/>
         <DCCReference Include="..\source\PraButtonStyle.pas"/>
+        <DCCReference Include="..\source\commom\PraConsts.pas"/>
+        <DCCReference Include="..\source\commom\view\PraAbout.pas">
+            <Form>FPraViewAbout</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <RcItem Include="..\img\logo.bmp">
+            <ResourceType>BITMAP</ResourceType>
+            <ResourceId>TPraLogo</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\TPraButtonStyle.bmp">
+            <ResourceType>BITMAP</ResourceType>
+            <ResourceId>TPraButtonStyle</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_SAVE_GRAY.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_SAVE_GRAY</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_SAVE_GREEN.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_SAVE_GREEN</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_SAVE_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_SAVE_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_DELETE_RED.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_DELETE_RED</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_DELETE_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_DELETE_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_EDIT_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_EDIT_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_EDIT_YELOOW.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_EDIT_YELOOW</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_FACEBOOK_BLUE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_FACEBOOK_BLUE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_FACEBOOK_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_FACEBOOK_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_LINKEDIN_BLUE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_LINKEDIN_BLUE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_LINKEDIN_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_LINKEDIN_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_TWITTER_BLUE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_TWITTER_BLUE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_TWITTER_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_TWITTER_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_YOUTUBE_RED.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_YOUTUBE_RED</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_YOUTUBE_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_YOUTUBE_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_CANCEL_GRAY.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_CANCEL_GRAY</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_CANCEL_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_CANCEL_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_SAVE_DISABLED.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_SAVE_DISABLED</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_CANCEL_DISABLED.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_CANCEL_DISABLED</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_DELETE_DISABLED.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_DELETE_DISABLED</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_EDIT_DISABLED.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_EDIT_DISABLED</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_PRINT_BLUE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_PRINT_BLUE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_PRINT_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_PRINT_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_GEAR_BLUE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_GEAR_BLUE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_GEAR_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_GEAR_WHITE</ResourceId>
+        </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -159,34 +283,12 @@
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\DataSnapIndy10ServerTransport250.bpl">Embarcadero DataSnap Server Transport Components</Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\Xq_D25.bpl">TxQuery Runtime Component</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\praImage.bpl">(untitled)</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\dclIPIndyImpl250.bpl">File C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\dclIPIndyImpl250.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\dacvcl240.bpl">Devart Data Access GUI VCL related Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\dacfmx240.bpl">Devart Data Access GUI FireMonkey related Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\dcldac240.bpl">Devart Data Access Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\unidacvcl240.bpl">Devart Universal Data Access GUI VCL related Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\unidacfmx240.bpl">Devart Universal Data Access GUI FMX related Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\ibprovider240.bpl">(untitled)</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\myprovider240.bpl">(untitled)</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\oraprovider240.bpl">(untitled)</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\dclunidacfmx240.bpl">Devart Universal Data Access FMX Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\dclunidac240.bpl">Devart Universal Data Access Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\dclvquery240.bpl">Devart Virtual Data Access Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\dclcrcontrols240.bpl">Devart Controls</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclemsedge250.bpl">Embarcadero RAD Server (EMS) Edge Components</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\MARSClient.CoreDesign250.bpl">MARS-Curiosity REST Library (Client)</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\MARSClient.FireDACDesign250.bpl">MARS-Curiosity REST Library (Client) - FireDAC</Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\DMVC_IDE_Expert_D102Tokyo.bpl">DelphiMVCFramework IDE Expert</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclBindCompFireDAC250.bpl">LiveBinding Expression Components FireDac</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclbindcompvcl250.bpl">Embarcadero LiveBindings Components VCL</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclbindcompdbx250.bpl">LiveBindings Expression Components DbExpress</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclDataSnapNativeServer250.bpl">Embarcadero DBExpress DataSnap Native Server Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclbindcomp250.bpl">Embarcadero LiveBindings Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclbindcompfmx250.bpl">Embarcadero LiveBindings Components FireMonkey</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclcrcontrols250.bpl">File c:\program files (x86)\embarcadero\studio\19.0\bin\dclcrcontrols250.bpl not found</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\DataSetManager250.bpl">File c:\program files (x86)\embarcadero\studio\19.0\bin\DataSetManager250.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Componentes\acbr\Lib\Delphi\LibD25\ACBr_NFeDanfeFR.bpl">ACBr - DANFe em FastReport - (http://www.projetoacbr.com.br/)</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Componentes\acbr\Lib\Delphi\LibD25\ACBr_CTeDacteFR.bpl">ACBr - DACTe em FastReport - (http://www.projetoacbr.com.br/)</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Componentes\acbr\Lib\Delphi\LibD25\ACBr_NFSeDanfseFR.bpl">ACBr - DANFSe em FastReport - (http://www.projetoacbr.com.br/)</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Componentes\acbr\Lib\Delphi\LibD25\ACBr_BoletoFR.bpl">ACBr - Boleto Impressão em  FastReport - (http://www.projetoacbr.com.br/)</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Componentes\acbr\Lib\Delphi\LibD25\ACBr_MDFeDamdfeFR.bpl">ACBr - DAMDFe em FastReport - (http://www.projetoacbr.com.br/)</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Componentes\acbr\Lib\Delphi\LibD25\ACBr_GNREGuiaFR.bpl">ACBr - GNRE Impressão da Guia em FastReport - (http://www.projetoacbr.com.br/)</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
@@ -210,7 +312,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\pracomponents.bpl" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\pracomponents.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>pracomponents.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
