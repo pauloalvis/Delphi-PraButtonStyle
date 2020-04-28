@@ -84,7 +84,8 @@
 
 Add the folder 
 
-**Delphi-PraButtonStyle\source** 
+**Delphi-PraButtonStyle\source**
+
 **Delphi-PraButtonStyle\source\commom** 
 
 directory to the Library path in Delphi inside the Tools->Options menu. 
