@@ -30,7 +30,7 @@
 //
 // ***************************************************************************
 
-unit PraButtonStyleTemplateLight;
+unit PraButtonStyleTemplateHeart;
 
 interface
 
@@ -73,7 +73,7 @@ type
     class function New: iPraPenConfigurationCommon;
   end;
 
-  TPraButtonStyleTemplateLight = class(TInterfacedObject, iPraButtonStyleTemplate)
+  TPraButtonStyleTemplateHeart = class(TInterfacedObject, iPraButtonStyleTemplate)
   private
     FPenConfigurationCommon: iPraPenConfigurationCommon;
     FFontConfigurationCommon: iPraFontConfigurationCommon;
@@ -110,12 +110,13 @@ type
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+  PraUtils;
 
 constructor TPraFontConfiguration.Create;
 begin
   FFont := TFont.Create;
-  Font.Color := clBlack;
+  Font.Color := clWhite;
   Font.Name := 'Tahoma';
   Font.Style := [fsBold];
   Font.Size := 10;
@@ -127,13 +128,13 @@ begin
   FontDisabled.Size := 10;
 
   FFontFocused := TFont.Create;
-  FontFocused.Color := clBlack;
+  FontFocused.Color := clWhite;
   FontFocused.Name := 'Tahoma';
   FontFocused.Style := [fsBold];
   FontFocused.Size := 10;
 
   FFontDown := TFont.Create;
-  FontDown.Color := clBlack;
+  FontDown.Color := clWhite;
   FontDown.Name := 'Tahoma';
   FontDown.Style := [fsBold];
   FontDown.Size := 10;
@@ -204,58 +205,58 @@ begin
   result := self.Create;
 end;
 
-constructor TPraButtonStyleTemplateLight.Create;
+constructor TPraButtonStyleTemplateHeart.Create;
 begin
   FPenConfigurationCommon := TPraPenConfiguration.New;
   FFontConfigurationCommon := TPraFontConfiguration.New;
 end;
 
-function TPraButtonStyleTemplateLight.GetBrushColor: TColor;
+function TPraButtonStyleTemplateHeart.GetBrushColor: TColor;
 begin
-  result := $00FAF9F8;
+  result := $00B8A027;
 end;
 
-function TPraButtonStyleTemplateLight.GetBrushDisabledColor: TColor;
+function TPraButtonStyleTemplateHeart.GetBrushDisabledColor: TColor;
 begin
-  result := $00CEC5BB;
+  result := $00E2D07A;
 end;
 
-function TPraButtonStyleTemplateLight.GetBrushDownColor: TColor;
+function TPraButtonStyleTemplateHeart.GetBrushDownColor: TColor;
 begin
-  result := $00E5E0DA;
+  result := $00978420;
 end;
 
-function TPraButtonStyleTemplateLight.GetBrushFocusedColor: TColor;
+function TPraButtonStyleTemplateHeart.GetBrushFocusedColor: TColor;
 begin
-  result := $00EAE6E2;
+  result := $00978420;
 end;
 
-function TPraButtonStyleTemplateLight.GetFontConfigurationCommon: iPraFontConfigurationCommon;
+function TPraButtonStyleTemplateHeart.GetFontConfigurationCommon: iPraFontConfigurationCommon;
 begin
   result := FFontConfigurationCommon;
 end;
 
-function TPraButtonStyleTemplateLight.GetPenDownColor: TColor;
+function TPraButtonStyleTemplateHeart.GetPenDownColor: TColor;
 begin
-  result := $00E5E0DA;
+  result := $00DBD093;
 end;
 
-function TPraButtonStyleTemplateLight.GetSizeHeight: Smallint;
+function TPraButtonStyleTemplateHeart.GetSizeHeight: Smallint;
 begin
   result := 32;
 end;
 
-function TPraButtonStyleTemplateLight.GetSizeWidth: Smallint;
+function TPraButtonStyleTemplateHeart.GetSizeWidth: Smallint;
 begin
   result := 90;
 end;
 
-class function TPraButtonStyleTemplateLight.New: iPraButtonStyleTemplate;
+class function TPraButtonStyleTemplateHeart.New: iPraButtonStyleTemplate;
 begin
   result := self.Create;
 end;
 
-function TPraButtonStyleTemplateLight.GetPenConfigurationCommon: iPraPenConfigurationCommon;
+function TPraButtonStyleTemplateHeart.GetPenConfigurationCommon: iPraPenConfigurationCommon;
 begin
   result := FPenConfigurationCommon;
 end;

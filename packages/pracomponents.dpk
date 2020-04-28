@@ -54,7 +54,11 @@ contains
   PraButtonStyleEdit in '..\source\PraButtonStyleEdit.pas',
   PraButtonStyleCancel in '..\source\PraButtonStyleCancel.pas',
   PraButtonStyleDelete in '..\source\PraButtonStyleDelete.pas',
-  PraButtonStyleGear in '..\source\PraButtonStyleGear.pas';
+  PraButtonStyleGear in '..\source\PraButtonStyleGear.pas',
+  PraButtonStyleHeart in '..\source\PraButtonStyleHeart.pas',
+  PraButtonStyleTemplateHeart in '..\source\PraButtonStyleTemplateHeart.pas',
+  PraButtonStyleMenu in '..\source\PraButtonStyleMenu.pas',
+  PraButtonStyleEmail in '..\source\PraButtonStyleEmail.pas';
 
 end.
 

@@ -169,6 +169,10 @@
         <DCCReference Include="..\source\PraButtonStyleCancel.pas"/>
         <DCCReference Include="..\source\PraButtonStyleDelete.pas"/>
         <DCCReference Include="..\source\PraButtonStyleGear.pas"/>
+        <DCCReference Include="..\source\PraButtonStyleHeart.pas"/>
+        <DCCReference Include="..\source\PraButtonStyleTemplateHeart.pas"/>
+        <DCCReference Include="..\source\PraButtonStyleMenu.pas"/>
+        <DCCReference Include="..\source\PraButtonStyleEmail.pas"/>
         <RcItem Include="..\img\logo.bmp">
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>TPraLogo</ResourceId>
@@ -276,6 +280,34 @@
         <RcItem Include="..\img\img buttons\PICTURE_GEAR_WHITE.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>PICTURE_GEAR_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_MENU_BLUE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_MENU_BLUE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_MENU_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_MENU_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_HEART_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_HEART_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_HEART_OUTLINE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_HEART_OUTLINE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_EMAIL_LIGHT.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_EMAIL_LIGHT</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_EMAIL_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_EMAIL_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_EMAIL_GRAY.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_EMAIL_GRAY</ResourceId>
         </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

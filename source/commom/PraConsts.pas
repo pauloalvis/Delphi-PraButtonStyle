@@ -37,7 +37,7 @@ interface
 const
   PraTitleDialog = 'Pra Components';
   PraAboutlicenseStatus = 'Open Source - Free Version';
-  Version = '2.00 BETA';
+  Version = '2.00';
 
 implementation
 

@@ -36,7 +36,6 @@ interface
 
 uses
   Vcl.Graphics,
-  Vcl.Imaging.pngimage,
   Vcl.buttons,
   System.SysUtils,
   System.Classes,
@@ -51,7 +50,7 @@ type
   TPraAlignment = (paLeftJustify, paCenter);
   TPraButtonStyleType = (stRoundRect, stRectangle);
   TPraButtonStyleStyle = (bsCustom, bsPrimary, bsSecondary, bsSuccess, bsDanger, bsWarning, bsInfo, bsLight, bsDark);
-  TTemplateStyle = (tsNone = 0, tsSave = 1, tsCancel = 2, tsEdit = 3, tsDelete = 4, tsPrint = 5, tsGear = 6);
+  TTemplateStyle = (tsNone = 0, tsSave = 1, tsCancel = 2, tsEdit = 3, tsDelete = 4, tsPrint = 5, tsGear = 6, tsMenu = 7, tsHeart = 8, tsEmail = 9);
 
   TPraButtonStyle = class;
 
@@ -206,6 +205,7 @@ type
     procedure LoadingTemplateWarning;
     procedure LoadingTemplatePrimary;
     procedure LoadingTemplateSecondary;
+    procedure LoadingTemplateHeart;
     procedure ApplyTemplate;
 
     procedure CreateButtonInfo;
@@ -223,6 +223,9 @@ type
     procedure CreateButtonDelete;
     procedure CreateButtonCancel;
     procedure CreateButtonGear;
+    procedure CreateButtonMenu;
+    procedure CreateButtonHeart;
+    procedure CreateButtonEmail;
 
     procedure SetPictureTemplate;
 
@@ -335,7 +338,11 @@ uses
   PraButtonStyleTemplatePrimary,
   PraButtonStyleTemplateSuccess,
   PraButtonStyleTemplateWarning,
-  PraButtonStyleTemplateSecondary;
+  PraButtonStyleTemplateSecondary,
+  PraButtonStyleMenu,
+  PraButtonStyleHeart,
+  PraButtonStyleTemplateHeart,
+  PraButtonStyleEmail;
 
 procedure TPraButtonStyle.ApplyTemplate;
 begin
@@ -546,9 +553,9 @@ begin
   Font.Name := 'Tahoma';
 
   FBrush.Color := clWhite;
-  FBrushDown.Color := $00EBEBEB;
-  FBrushFocused.Color := $00EBEBEB;
-  FBrushDisabled.Color := $00EBEBEB;
+  FBrushDown.Color := clWhite;
+  FBrushFocused.Color := clWhite;
+  FBrushDisabled.Color := clWhite;
 
   FFontDown.Assign(Self.Font);
   FFontFocused.Assign(Self.Font);
@@ -589,10 +596,32 @@ begin
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
 end;
 
+procedure TPraButtonStyle.CreateButtonEmail;
+begin
+  LoadingTemplateLight;
+  FPraButtonStyleTemplateType := TPraButtonStyleEmail.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  PictureCenter := true;
+end;
+
 procedure TPraButtonStyle.CreateButtonGear;
 begin
   LoadingTemplatePrimary;
   FPraButtonStyleTemplateType := TPraButtonStyleGear.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  PictureCenter := true;
+end;
+
+procedure TPraButtonStyle.CreateButtonHeart;
+begin
+  LoadingTemplateHeart;
+  FPraButtonStyleTemplateType := TPraButtonStyleHeart.New;
 
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
@@ -614,6 +643,17 @@ begin
 
   Height := FPraButtonStyleTemplate.GetSizeHeight;
   Width := FPraButtonStyleTemplate.GetSizeWidth;
+end;
+
+procedure TPraButtonStyle.CreateButtonMenu;
+begin
+  LoadingTemplatePrimary;
+  FPraButtonStyleTemplateType := TPraButtonStyleMenu.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  PictureCenter := true;
 end;
 
 procedure TPraButtonStyle.CreateButtonPrimary;
@@ -1251,6 +1291,12 @@ begin
         CreateButtonPrint;
       tsGear:
         CreateButtonGear;
+      tsMenu:
+        CreateButtonMenu;
+      tsHeart:
+        CreateButtonHeart;
+      tsEmail:
+        CreateButtonEmail;
     end;
 
     SetPictureTemplate;
@@ -1297,6 +1343,13 @@ end;
 procedure TPraButtonStyle.LoadingTemplateDark;
 begin
   FPraButtonStyleTemplate := TPraButtonStyleTemplateDark.New;
+
+  ApplyTemplate;
+end;
+
+procedure TPraButtonStyle.LoadingTemplateHeart;
+begin
+  FPraButtonStyleTemplate := TPraButtonStyleTemplateHeart.New;
 
   ApplyTemplate;
 end;

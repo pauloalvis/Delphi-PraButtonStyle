@@ -39,7 +39,6 @@ uses
   ToolsAPI,
   DesignIntf,
   DesignEditors,
-  Winapi.Windows,
   Vcl.Graphics,
   System.Classes;
 
