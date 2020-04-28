@@ -37,7 +37,24 @@ contains
   PraRegister in '..\source\commom\PraRegister.pas',
   PraButtonStyle in '..\source\PraButtonStyle.pas',
   PraConsts in '..\source\commom\PraConsts.pas',
-  PraAbout in '..\source\commom\view\PraAbout.pas' {FPraViewAbout};
+  PraAbout in '..\source\commom\view\PraAbout.pas' {FPraViewAbout},
+  PraUtils in '..\source\commom\PraUtils.pas',
+  PraButtonStylePrint in '..\source\PraButtonStylePrint.pas',
+  PraButtonStyleTemplateDanger in '..\source\PraButtonStyleTemplateDanger.pas',
+  PraButtonStyleTemplateDark in '..\source\PraButtonStyleTemplateDark.pas',
+  PraButtonStyleTemplateGear in '..\source\PraButtonStyleTemplateGear.pas',
+  PraButtonStyleTemplateInfo in '..\source\PraButtonStyleTemplateInfo.pas',
+  PraButtonStyleTemplateLight in '..\source\PraButtonStyleTemplateLight.pas',
+  PraButtonStyleTemplatePrimary in '..\source\PraButtonStyleTemplatePrimary.pas',
+  PraButtonStyleTemplateSecondary in '..\source\PraButtonStyleTemplateSecondary.pas',
+  PraButtonStyleTemplateSuccess in '..\source\PraButtonStyleTemplateSuccess.pas',
+  PraButtonStyleTemplateWarning in '..\source\PraButtonStyleTemplateWarning.pas',
+  PraInterfaces in '..\source\PraInterfaces.pas',
+  PraButtonStyleSave in '..\source\PraButtonStyleSave.pas',
+  PraButtonStyleEdit in '..\source\PraButtonStyleEdit.pas',
+  PraButtonStyleCancel in '..\source\PraButtonStyleCancel.pas',
+  PraButtonStyleDelete in '..\source\PraButtonStyleDelete.pas',
+  PraButtonStyleGear in '..\source\PraButtonStyleGear.pas';
 
 end.
 
