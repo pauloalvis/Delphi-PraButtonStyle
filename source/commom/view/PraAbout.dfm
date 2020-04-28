@@ -2,7 +2,6 @@ object FPraViewAbout: TFPraViewAbout
   Left = 0
   Top = 0
   BorderStyle = bsNone
-  Caption = 'Pra - C'#243'digo do Programador'
   ClientHeight = 217
   ClientWidth = 291
   Color = clBtnFace

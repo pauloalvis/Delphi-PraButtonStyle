@@ -44,7 +44,8 @@ uses
   Vcl.Controls,
   Winapi.Messages,
   Winapi.Windows,
-  System.Math;
+  System.Math,
+  PraInterfaces;
 
 type
   TPraAlignment = (paLeftJustify, paCenter);
@@ -84,6 +85,9 @@ type
 
   TPraButtonStyle = class(TGraphicControl)
   private
+    FPraButtonStyleTemplate: iPraButtonStyleTemplate;
+    FPraButtonStyleTemplateType: iPraButtonStyleTemplateType;
+
     FMouseEnter: Boolean;
     FState: TButtonState;
     FFocusControl: TFocusControl;
@@ -194,6 +198,16 @@ type
     procedure FontFocusedCopyOfFont(const AValue: Boolean);
     procedure FontDisabledCopyOfFont(const AValue: Boolean);
 
+    procedure LoadingTemplateInfo;
+    procedure LoadingTemplateDark;
+    procedure LoadingTemplateLight;
+    procedure LoadingTemplateDanger;
+    procedure LoadingTemplateSuccess;
+    procedure LoadingTemplateWarning;
+    procedure LoadingTemplatePrimary;
+    procedure LoadingTemplateSecondary;
+    procedure ApplyTemplate;
+
     procedure CreateButtonInfo;
     procedure CreateButtonDark;
     procedure CreateButtonLight;
@@ -202,22 +216,15 @@ type
     procedure CreateButtonWarning;
     procedure CreateButtonPrimary;
     procedure CreateButtonSecondary;
+
+    procedure CreateButtonPrint;
+    procedure CreateButtonSave;
+    procedure CreateButtonEdit;
+    procedure CreateButtonDelete;
+    procedure CreateButtonCancel;
     procedure CreateButtonGear;
 
-    procedure SetPictureSave;
-    procedure SetPictureEdit;
-    procedure SetPictureDelete;
-    procedure SetPictureCancel;
-    procedure SetPicturePrint;
-    procedure SetPictureGear;
-
-    procedure PenConfigurationCommon;
-    procedure FontConfigurationCommon;
-    procedure FontColorConfigurationCommon(const AValue: TColor);
-
-    procedure SetPictureOfResource(const AValue: String);
-    procedure SetPictureFocusedOfResource(const AValue: String);
-    procedure SetPictureDisabledOfResource(const AValue: String);
+    procedure SetPictureTemplate;
 
     procedure CreateButtonDefault;
     procedure SetSize(const AHeight, AWidth: Integer);
@@ -314,7 +321,42 @@ type
 implementation
 
 uses
-  Vcl.Forms;
+  Vcl.Forms,
+  PraButtonStyleSave,
+  PraButtonStyleEdit,
+  PraButtonStyleGear,
+  PraButtonStylePrint,
+  PraButtonStyleCancel,
+  PraButtonStyleDelete,
+  PraButtonStyleTemplateInfo,
+  PraButtonStyleTemplateDark,
+  PraButtonStyleTemplateLight,
+  PraButtonStyleTemplateDanger,
+  PraButtonStyleTemplatePrimary,
+  PraButtonStyleTemplateSuccess,
+  PraButtonStyleTemplateWarning,
+  PraButtonStyleTemplateSecondary;
+
+procedure TPraButtonStyle.ApplyTemplate;
+begin
+  Brush.Color := FPraButtonStyleTemplate.GetBrushColor;
+  BrushFocused.Color := FPraButtonStyleTemplate.GetBrushFocusedColor;
+  BrushDown.Color := FPraButtonStyleTemplate.GetBrushDownColor;
+  BrushDisabled.Color := FPraButtonStyleTemplate.GetBrushDisabledColor;
+
+  PenDown.Color := FPraButtonStyleTemplate.GetPenDownColor;
+
+  Pen.Style := FPraButtonStyleTemplate.GetPenConfigurationCommon.GetPenStyle;
+  PenFocused.Style := FPraButtonStyleTemplate.GetPenConfigurationCommon.GetPenFocusedStyle;
+  PenDisabled.Style := FPraButtonStyleTemplate.GetPenConfigurationCommon.GetPenDisabledStyle;
+  PenDown.Style := FPraButtonStyleTemplate.GetPenConfigurationCommon.GetPenDownStyle;
+  PenDown.Width := FPraButtonStyleTemplate.GetPenConfigurationCommon.GetPenDownWidth;
+
+  Font.Assign(FPraButtonStyleTemplate.GetFontConfigurationCommon.GetFont);
+  FontDown.Assign(FPraButtonStyleTemplate.GetFontConfigurationCommon.GetFontDown);
+  FontDisabled.Assign(FPraButtonStyleTemplate.GetFontConfigurationCommon.GetFontDisabled);
+  FontFocused.Assign(FPraButtonStyleTemplate.GetFontConfigurationCommon.GetFontFocused);
+end;
 
 procedure TPraButtonStyle.Assign(Source: TPersistent);
 begin
@@ -377,33 +419,6 @@ begin
 
   FMouseEnter := false;
   invalidate;
-end;
-
-procedure TPraButtonStyle.FontColorConfigurationCommon(const AValue: TColor);
-begin
-  Font.Color := AValue;
-  FontDown.Color := AValue;
-  FontFocused.Color := AValue;
-  FontDisabled.Color := AValue;
-end;
-
-procedure TPraButtonStyle.FontConfigurationCommon;
-begin
-  Font.Name := 'Tahoma';
-  Font.Style := [fsBold];
-  Font.Size := 10;
-  //
-  FontDown.Name := 'Tahoma';
-  FontDown.Style := [fsBold];
-  FontDown.Size := 10;
-  //
-  FontFocused.Name := 'Tahoma';
-  FontFocused.Style := [fsBold];
-  FontFocused.Size := 10;
-  //
-  FontDisabled.Name := 'Tahoma';
-  FontDisabled.Style := [fsBold];
-  FontDisabled.Size := 10;
 end;
 
 procedure TPraButtonStyle.FontDisabledCopyOfFont(const AValue: Boolean);
@@ -501,42 +516,29 @@ begin
   CreateButtonDefault;
 end;
 
+procedure TPraButtonStyle.CreateButtonCancel;
+begin
+  LoadingTemplateSecondary;
+  FPraButtonStyleTemplateType := TPraButtonStyleCancel.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+end;
+
 procedure TPraButtonStyle.CreateButtonDanger;
 begin
-  Brush.Color := $004737DA;
-  BrushFocused.Color := $003626C6;
-  BrushDown.Color := $003626C6;
+  LoadingTemplateDanger;
 
-  PenDown.Color := $00A39BEC;
-
-  PenConfigurationCommon;
-  FontConfigurationCommon;
-  FontColorConfigurationCommon(clWhite);
-
-  BrushDisabled.Color := $00A9A2EE;
-  FontDisabled.Color := $00FFF0E2;
-
-  if isTemplateStyle then
-  begin
-    SetPictureDelete;
-    Caption := 'Delete';
-  end;
+  Height := FPraButtonStyleTemplate.GetSizeHeight;
+  Width := FPraButtonStyleTemplate.GetSizeWidth;
 end;
 
 procedure TPraButtonStyle.CreateButtonDark;
 begin
-  Brush.Color := $00403A34;
-  BrushFocused.Color := $002B2723;
-  BrushDown.Color := $002B2723;
+  LoadingTemplateDark;
 
-  PenDown.Color := $009F9C99;
-
-  PenConfigurationCommon;
-  FontConfigurationCommon;
-  FontColorConfigurationCommon(clWhite);
-
-  BrushDisabled.Color := $0094877A;
-  FontDisabled.Color := $00FFF0E2;
+  Height := FPraButtonStyleTemplate.GetSizeHeight;
+  Width := FPraButtonStyleTemplate.GetSizeWidth;
 end;
 
 procedure TPraButtonStyle.CreateButtonDefault;
@@ -569,132 +571,99 @@ begin
     FPictureDisabled.Graphic := nil;
 end;
 
+procedure TPraButtonStyle.CreateButtonDelete;
+begin
+  LoadingTemplateDanger;
+  FPraButtonStyleTemplateType := TPraButtonStyleDelete.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+end;
+
+procedure TPraButtonStyle.CreateButtonEdit;
+begin
+  LoadingTemplateWarning;
+  FPraButtonStyleTemplateType := TPraButtonStyleEdit.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+end;
+
 procedure TPraButtonStyle.CreateButtonGear;
 begin
-  CreateButtonPrimary;
-  SetPictureGear;
+  LoadingTemplatePrimary;
+  FPraButtonStyleTemplateType := TPraButtonStyleGear.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
   PictureCenter := true;
-  SetSize(41, 41);
 end;
 
 procedure TPraButtonStyle.CreateButtonInfo;
 begin
-  Brush.Color := $00B8A027;
-  BrushFocused.Color := $00978420;
-  BrushDown.Color := $00978420;
+  LoadingTemplateInfo;
 
-  PenDown.Color := $00DBD093;
-
-  PenConfigurationCommon;
-  FontConfigurationCommon;
-  FontColorConfigurationCommon(clWhite);
-
-  BrushDisabled.Color := $00E2D07A;
-  FontDisabled.Color := $00FFF0E2;
-
-  if isTemplateStyle then
-  begin
-    SetPicturePrint;
-    Caption := 'Print';
-  end;
+  Height := FPraButtonStyleTemplate.GetSizeHeight;
+  Width := FPraButtonStyleTemplate.GetSizeWidth;
 end;
 
 procedure TPraButtonStyle.CreateButtonLight;
 begin
-  Brush.Color := $00FAF9F8;
-  BrushFocused.Color := $00EAE6E2;
-  BrushDown.Color := $00EAE6E2;
+  LoadingTemplateLight;
 
-  PenDown.Color := $00E5E0DA;
-
-  PenConfigurationCommon;
-  FontConfigurationCommon;
-  FontColorConfigurationCommon(clBlack);
-
-  BrushDisabled.Color := $00CEC5BB;
-  FontDisabled.Color := $00FFF0E2;
+  Height := FPraButtonStyleTemplate.GetSizeHeight;
+  Width := FPraButtonStyleTemplate.GetSizeWidth;
 end;
 
 procedure TPraButtonStyle.CreateButtonPrimary;
 begin
-  Brush.Color := $00FE6F2C;
-  BrushFocused.Color := $00D85F24;
-  BrushDown.Color := $00D85F24;
+  LoadingTemplatePrimary;
 
-  PenDown.Color := $00FFB795;
+  Height := FPraButtonStyleTemplate.GetSizeHeight;
+  Width := FPraButtonStyleTemplate.GetSizeWidth;
+end;
 
-  PenConfigurationCommon;
-  FontConfigurationCommon;
-  FontColorConfigurationCommon(clWhite);
+procedure TPraButtonStyle.CreateButtonPrint;
+begin
+  LoadingTemplateInfo;
+  FPraButtonStyleTemplateType := TPraButtonStylePrint.New;
 
-  BrushDisabled.Color := $00FFA95A;
-  FontDisabled.Color := $00FFF0E2;
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+end;
+
+procedure TPraButtonStyle.CreateButtonSave;
+begin
+  LoadingTemplateSuccess;
+  FPraButtonStyleTemplateType := TPraButtonStyleSave.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
 end;
 
 procedure TPraButtonStyle.CreateButtonSecondary;
 begin
-  Brush.Color := $007D756C;
-  BrushFocused.Color := $0068625A;
-  BrushDown.Color := $0068625A;
+  LoadingTemplateSecondary;
 
-  PenDown.Color := $00BEB9B5;
-
-  PenConfigurationCommon;
-  FontConfigurationCommon;
-  FontColorConfigurationCommon(clWhite);
-
-  BrushDisabled.Color := $00AEA8A2;
-  FontDisabled.Color := $00FFF0E2;
-
-  if isTemplateStyle then
-  begin
-    SetPictureCancel;
-    Caption := 'Cancel';
-  end;
+  Height := FPraButtonStyleTemplate.GetSizeHeight;
+  Width := FPraButtonStyleTemplate.GetSizeWidth;
 end;
 
 procedure TPraButtonStyle.CreateButtonSuccess;
 begin
-  Brush.Color := $0045AA29;
-  BrushFocused.Color := $00388A22;
-  BrushDown.Color := $00388A22;
+  LoadingTemplateSuccess;
 
-  PenDown.Color := $00A2D494;
-
-  PenConfigurationCommon;
-  FontConfigurationCommon;
-  FontColorConfigurationCommon(clWhite);
-
-  BrushDisabled.Color := $0089DD71;
-  FontDisabled.Color := $00FFF0E2;
-
-  if isTemplateStyle then
-  begin
-    SetPictureSave;
-    Caption := 'Save';
-  end;
+  Height := FPraButtonStyleTemplate.GetSizeHeight;
+  Width := FPraButtonStyleTemplate.GetSizeWidth;
 end;
 
 procedure TPraButtonStyle.CreateButtonWarning;
 begin
-  Brush.Color := $0016C5FC;
-  BrushFocused.Color := $000FACDE;
-  BrushDown.Color := $000FACDE;
+  LoadingTemplateWarning;
 
-  PenDown.Color := $008AE2FE;
-
-  PenConfigurationCommon;
-  FontConfigurationCommon;
-  FontColorConfigurationCommon(clWhite);
-
-  BrushDisabled.Color := $0085E0FE;
-  FontDisabled.Color := $00949494;
-
-  if isTemplateStyle then
-  begin
-    SetPictureEdit;
-    Caption := 'Edit';
-  end;
+  Height := FPraButtonStyleTemplate.GetSizeHeight;
+  Width := FPraButtonStyleTemplate.GetSizeWidth;
 end;
 
 procedure TPraButtonStyle.CreateFocusControl(AOwner: TComponent; AParent: TWinControl);
@@ -987,15 +956,6 @@ begin
   end;
 end;
 
-procedure TPraButtonStyle.PenConfigurationCommon;
-begin
-  Pen.Style := psClear;
-  PenFocused.Style := psClear;
-  PenDisabled.Style := psClear;
-  PenDown.Style := psSolid;
-  PenDown.Width := 3;
-end;
-
 procedure TPraButtonStyle.SetAlignment(const Value: TPraAlignment);
 begin
   if FAlignment <> Value then
@@ -1116,22 +1076,6 @@ begin
   FPicture.Assign(Value);
 end;
 
-procedure TPraButtonStyle.SetPictureCancel;
-begin
-  if StyleOutline then
-  begin
-    SetPictureOfResource('PICTURE_CANCEL_GRAY');
-    SetPictureFocusedOfResource('PICTURE_CANCEL_WHITE');
-  end
-  else
-  begin
-    SetPictureOfResource('PICTURE_CANCEL_WHITE');
-    SetPictureFocusedOfResource('PICTURE_CANCEL_WHITE');
-  end;
-
-  SetPictureDisabledOfResource('PICTURE_CANCEL_WHITE');
-end;
-
 procedure TPraButtonStyle.SetPictureCenter(const Value: Boolean);
 begin
   if FPictureCenter <> Value then
@@ -1141,112 +1085,25 @@ begin
   end;
 end;
 
-procedure TPraButtonStyle.SetPictureDelete;
-begin
-  if StyleOutline then
-  begin
-    SetPictureOfResource('PICTURE_DELETE_RED');
-    SetPictureFocusedOfResource('PICTURE_DELETE_WHITE');
-  end
-  else
-  begin
-    SetPictureOfResource('PICTURE_DELETE_WHITE');
-    SetPictureFocusedOfResource('PICTURE_DELETE_WHITE');
-  end;
-
-  SetPictureDisabledOfResource('PICTURE_DELETE_WHITE');
-end;
-
 procedure TPraButtonStyle.SetPictureDisabled(const Value: TPicture);
 begin
   FPictureDisabled.Assign(Value);
 end;
 
-procedure TPraButtonStyle.SetPictureOfResource(const AValue: String);
-var
-  lPNG: TPngImage;
-begin
-  lPNG := TPngImage.Create;
-  try
-    lPNG.LoadFromResourceName(SysInit.HInstance, AValue);
-    Picture.Assign(lPNG);
-  finally
-    lPNG.Free;
-  end;
-end;
-
-procedure TPraButtonStyle.SetPicturePrint;
+procedure TPraButtonStyle.SetPictureTemplate;
 begin
   if StyleOutline then
   begin
-    SetPictureOfResource('PICTURE_PRINT_BLUE');
-    SetPictureFocusedOfResource('PICTURE_PRINT_WHITE');
+    Picture.Assign(FPraButtonStyleTemplateType.GetPictureStyleOutline);
+    PictureFocused.Assign(FPraButtonStyleTemplateType.GetPictureFocusedStyleOutline);
   end
   else
   begin
-    SetPictureOfResource('PICTURE_PRINT_WHITE');
-    SetPictureFocusedOfResource('PICTURE_PRINT_WHITE');
+    Picture.Assign(FPraButtonStyleTemplateType.GetPicture);
+    PictureFocused.Assign(FPraButtonStyleTemplateType.GetPictureFocused);
   end;
 
-  SetPictureDisabledOfResource('PICTURE_PRINT_WHITE');
-end;
-
-procedure TPraButtonStyle.SetPictureFocusedOfResource(const AValue: String);
-var
-  lPNG: TPngImage;
-begin
-  lPNG := TPngImage.Create;
-  try
-    lPNG.LoadFromResourceName(SysInit.HInstance, AValue);
-    PictureFocused.Assign(lPNG);
-  finally
-    lPNG.Free;
-  end;
-end;
-
-procedure TPraButtonStyle.SetPictureGear;
-begin
-  if StyleOutline then
-  begin
-    SetPictureOfResource('PICTURE_GEAR_BLUE');
-    SetPictureFocusedOfResource('PICTURE_GEAR_WHITE');
-  end
-  else
-  begin
-    SetPictureOfResource('PICTURE_GEAR_WHITE');
-    SetPictureFocusedOfResource('PICTURE_GEAR_WHITE');
-  end;
-
-  SetPictureDisabledOfResource('PICTURE_GEAR_WHITE');
-end;
-
-procedure TPraButtonStyle.SetPictureDisabledOfResource(const AValue: String);
-var
-  lPNG: TPngImage;
-begin
-  lPNG := TPngImage.Create;
-  try
-    lPNG.LoadFromResourceName(SysInit.HInstance, AValue);
-    PictureDisabled.Assign(lPNG);
-  finally
-    lPNG.Free;
-  end;
-end;
-
-procedure TPraButtonStyle.SetPictureEdit;
-begin
-  if StyleOutline then
-  begin
-    SetPictureOfResource('PICTURE_EDIT_YELOOW');
-    SetPictureFocusedOfResource('PICTURE_EDIT_WHITE');
-  end
-  else
-  begin
-    SetPictureOfResource('PICTURE_EDIT_WHITE');
-    SetPictureFocusedOfResource('PICTURE_EDIT_WHITE');
-  end;
-
-  SetPictureDisabledOfResource('PICTURE_EDIT_DISABLED');
+  PictureDisabled.Assign(FPraButtonStyleTemplateType.GetPictureDisabled);
 end;
 
 procedure TPraButtonStyle.SetPictureMarginLeft(const Value: SmallInt);
@@ -1256,22 +1113,6 @@ begin
     FPictureMarginLeft := Value;
     invalidate;
   end;
-end;
-
-procedure TPraButtonStyle.SetPictureSave;
-begin
-  if StyleOutline then
-  begin
-    SetPictureOfResource('PICTURE_SAVE_GREEN');
-    SetPictureFocusedOfResource('PICTURE_SAVE_WHITE');
-  end
-  else
-  begin
-    SetPictureOfResource('PICTURE_SAVE_WHITE');
-    SetPictureFocusedOfResource('PICTURE_SAVE_WHITE');
-  end;
-
-  SetPictureDisabledOfResource('PICTURE_SAVE_WHITE');
 end;
 
 procedure TPraButtonStyle.SetPictureFocused(const Value: TPicture);
@@ -1399,23 +1240,23 @@ begin
   begin
     case Value of
       tsSave:
-        CreateButtonSuccess;
+        CreateButtonSave;
       tsEdit:
-        CreateButtonWarning;
+        CreateButtonEdit;
       tsCancel:
-        CreateButtonSecondary;
+        CreateButtonCancel;
       tsDelete:
-        CreateButtonDanger;
+        CreateButtonDelete;
       tsPrint:
-        CreateButtonInfo;
+        CreateButtonPrint;
       tsGear:
         CreateButtonGear;
     end;
 
+    SetPictureTemplate;
+
     if Value <> tsNone then
     begin
-      SetSize(32, 90);
-
       if StyleOutline then
         StyleOutlineConfig;
     end;
@@ -1444,6 +1285,62 @@ end;
 function TPraButtonStyle.isTemplateStyle: Boolean;
 begin
   result := TemplateStyle <> tsNone;
+end;
+
+procedure TPraButtonStyle.LoadingTemplateDanger;
+begin
+  FPraButtonStyleTemplate := TPraButtonStyleTemplateDanger.New;
+
+  ApplyTemplate;
+end;
+
+procedure TPraButtonStyle.LoadingTemplateDark;
+begin
+  FPraButtonStyleTemplate := TPraButtonStyleTemplateDark.New;
+
+  ApplyTemplate;
+end;
+
+procedure TPraButtonStyle.LoadingTemplateInfo;
+begin
+  FPraButtonStyleTemplate := TPraButtonStyleTemplateInfo.New;
+
+  ApplyTemplate;
+end;
+
+procedure TPraButtonStyle.LoadingTemplateLight;
+begin
+  FPraButtonStyleTemplate := TPraButtonStyleTemplateLight.New;
+
+  ApplyTemplate;
+end;
+
+procedure TPraButtonStyle.LoadingTemplatePrimary;
+begin
+  FPraButtonStyleTemplate := TPraButtonStyleTemplatePrimary.New;
+
+  ApplyTemplate;
+end;
+
+procedure TPraButtonStyle.LoadingTemplateSecondary;
+begin
+  FPraButtonStyleTemplate := TPraButtonStyleTemplateSecondary.New;
+
+  ApplyTemplate;
+end;
+
+procedure TPraButtonStyle.LoadingTemplateSuccess;
+begin
+  FPraButtonStyleTemplate := TPraButtonStyleTemplateSuccess.New;
+
+  ApplyTemplate;
+end;
+
+procedure TPraButtonStyle.LoadingTemplateWarning;
+begin
+  FPraButtonStyleTemplate := TPraButtonStyleTemplateWarning.New;
+
+  ApplyTemplate;
 end;
 
 procedure TPraButtonStyle.WMEraseBkgnd(var Message: TWMEraseBkGnd);
