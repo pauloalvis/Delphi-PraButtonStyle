@@ -173,13 +173,13 @@
         <DCCReference Include="..\source\PraButtonStyleTemplateHeart.pas"/>
         <DCCReference Include="..\source\PraButtonStyleMenu.pas"/>
         <DCCReference Include="..\source\PraButtonStyleEmail.pas"/>
+        <DCCReference Include="..\source\PraButtonStyleInsert.pas"/>
+        <DCCReference Include="..\source\PraButtonStyleBack.pas"/>
+        <DCCReference Include="..\source\PraButtonStyleClose.pas"/>
+        <DCCReference Include="..\source\PraButtonStyleReport.pas"/>
         <RcItem Include="..\img\logo.bmp">
             <ResourceType>BITMAP</ResourceType>
             <ResourceId>TPraLogo</ResourceId>
-        </RcItem>
-        <RcItem Include="..\img\TPraButtonStyle.bmp">
-            <ResourceType>BITMAP</ResourceType>
-            <ResourceId>TPraButtonStyle</ResourceId>
         </RcItem>
         <RcItem Include="..\img\img buttons\PICTURE_SAVE_GRAY.png">
             <ResourceType>RCDATA</ResourceType>
@@ -308,6 +308,38 @@
         <RcItem Include="..\img\img buttons\PICTURE_EMAIL_GRAY.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>PICTURE_EMAIL_GRAY</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_INSERT_GREEN.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_INSERT_GREEN</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_INSERT_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_INSERT_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_CLOSE_RED.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_CLOSE_RED</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_CLOSE_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_CLOSE_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_BACK_BLACK.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_BACK_BLACK</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_BACK_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_BACK_WHITE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_REPORT_BLUE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_REPORT_BLUE</ResourceId>
+        </RcItem>
+        <RcItem Include="..\img\img buttons\PICTURE_REPORT_WHITE.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>PICTURE_REPORT_WHITE</ResourceId>
         </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

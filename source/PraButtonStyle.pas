@@ -49,7 +49,8 @@ type
   TPraAlignment = (paLeftJustify, paCenter);
   TPraButtonStyleType = (stRoundRect, stRectangle);
   TPraButtonStyleStyle = (bsCustom, bsPrimary, bsSecondary, bsSuccess, bsDanger, bsWarning, bsInfo, bsLight, bsDark);
-  TTemplateStyle = (tsNone = 0, tsSave = 1, tsCancel = 2, tsEdit = 3, tsDelete = 4, tsPrint = 5, tsGear = 6, tsMenu = 7, tsHeart = 8, tsEmail = 9);
+  TTemplateStyle = (tsNone = 0, tsSave = 1, tsCancel = 2, tsEdit = 3, tsDelete = 4, tsPrint = 5, tsGear = 6, tsMenu = 7, tsHeart = 8, tsEmail = 9, tsInsert = 10, tsBack = 11, tsClose = 12,
+    tsReport = 13);
 
   TPraButtonStyle = class;
 
@@ -225,6 +226,10 @@ type
     procedure CreateButtonMenu;
     procedure CreateButtonHeart;
     procedure CreateButtonEmail;
+    procedure CreateButtonInsert;
+    procedure CreateButtonBack;
+    procedure CreateButtonClose;
+    procedure CreateButtonReport;
 
     procedure SetPictureTemplate;
 
@@ -342,7 +347,11 @@ uses
   PraButtonStyleMenu,
   PraButtonStyleHeart,
   PraButtonStyleTemplateHeart,
-  PraButtonStyleEmail;
+  PraButtonStyleEmail,
+  PraButtonStyleInsert,
+  PraButtonStyleBack,
+  PraButtonStyleClose,
+  PraButtonStyleReport;
 
 procedure TPraButtonStyle.ApplyTemplate;
 begin
@@ -528,6 +537,18 @@ begin
   CreateButtonDefault;
 end;
 
+procedure TPraButtonStyle.CreateButtonBack;
+begin
+  LoadingTemplateLight;
+  FPraButtonStyleTemplateType := TPraButtonStyleBack.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  Self.Caption := 'Back';
+  Self.Alignment := paLeftJustify;
+end;
+
 procedure TPraButtonStyle.CreateButtonCancel;
 begin
   LoadingTemplateSecondary;
@@ -535,6 +556,18 @@ begin
 
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
+end;
+
+procedure TPraButtonStyle.CreateButtonClose;
+begin
+  LoadingTemplateDanger;
+  FPraButtonStyleTemplateType := TPraButtonStyleClose.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  Self.Caption := 'Close';
+  Self.Alignment := paLeftJustify;
 end;
 
 procedure TPraButtonStyle.CreateButtonDanger;
@@ -642,6 +675,18 @@ begin
   Width := FPraButtonStyleTemplate.GetSizeWidth;
 end;
 
+procedure TPraButtonStyle.CreateButtonInsert;
+begin
+  LoadingTemplateSuccess;
+  FPraButtonStyleTemplateType := TPraButtonStyleInsert.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  Self.Caption := 'Insert';
+  Self.Alignment := paLeftJustify;
+end;
+
 procedure TPraButtonStyle.CreateButtonLight;
 begin
   LoadingTemplateLight;
@@ -676,6 +721,18 @@ begin
 
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
+end;
+
+procedure TPraButtonStyle.CreateButtonReport;
+begin
+  LoadingTemplatePrimary;
+  FPraButtonStyleTemplateType := TPraButtonStyleReport.New;
+
+  Height := FPraButtonStyleTemplateType.GetSizeHeight;
+  Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  Self.Caption := 'Report';
+  Self.Alignment := paLeftJustify;
 end;
 
 procedure TPraButtonStyle.CreateButtonSave;
@@ -1302,6 +1359,14 @@ begin
         CreateButtonHeart;
       tsEmail:
         CreateButtonEmail;
+      tsInsert:
+        CreateButtonInsert;
+      tsBack:
+        CreateButtonBack;
+      tsClose:
+        CreateButtonClose;
+      tsReport:
+        CreateButtonReport;
     end;
 
     SetPictureTemplate;
