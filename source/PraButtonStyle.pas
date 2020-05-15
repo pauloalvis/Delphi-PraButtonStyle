@@ -1,5 +1,4 @@
-﻿// *************************************************************************** }
-//
+﻿//
 // Delphi PraButtonStyle
 //
 // Copyright (c) 2020-2020 Paulo Roberto Alves
@@ -246,6 +245,7 @@ type
     property CanFocus: Boolean read GetCanFocus;
 
     procedure SetFocus;
+    procedure click; override;
     procedure Assign(Source: TPersistent); override;
     procedure SetBounds(ALeft, ATop, AWidth, AHeight: Integer); override;
 
@@ -398,6 +398,11 @@ begin
     FFontFocused.Height := MulDiv(FFontFocused.Height, M, D);
     FFontDisabled.Height := MulDiv(FFontDisabled.Height, M, D);
   end;
+  inherited;
+end;
+
+procedure TPraButtonStyle.click;
+begin
   inherited;
 end;
 
@@ -761,7 +766,7 @@ begin
     FState := bsDown;
     invalidate;
 
-    Self.Click;
+    Self.click;
   end;
 end;
 
