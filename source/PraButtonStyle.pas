@@ -556,6 +556,9 @@ begin
 
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  Self.Caption := 'Cancel';
+  Self.Alignment := paLeftJustify;
 end;
 
 procedure TPraButtonStyle.CreateButtonClose;
@@ -623,6 +626,9 @@ begin
 
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  Self.Caption := 'Delete';
+  Self.Alignment := paLeftJustify;
 end;
 
 procedure TPraButtonStyle.CreateButtonEdit;
@@ -632,6 +638,9 @@ begin
 
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  Self.Caption := 'Edit';
+  Self.Alignment := paLeftJustify;
 end;
 
 procedure TPraButtonStyle.CreateButtonEmail;
@@ -642,7 +651,8 @@ begin
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
 
-  PictureCenter := true;
+  Self.Caption := 'Email';
+  Self.Alignment := paLeftJustify;
 end;
 
 procedure TPraButtonStyle.CreateButtonGear;
@@ -653,7 +663,8 @@ begin
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
 
-  PictureCenter := true;
+  Self.Caption := 'Gear';
+  Self.Alignment := paLeftJustify;
 end;
 
 procedure TPraButtonStyle.CreateButtonHeart;
@@ -664,7 +675,8 @@ begin
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
 
-  PictureCenter := true;
+  Self.Caption := 'Heart';
+  Self.Alignment := paLeftJustify;
 end;
 
 procedure TPraButtonStyle.CreateButtonInfo;
@@ -703,7 +715,8 @@ begin
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
 
-  PictureCenter := true;
+  Self.Caption := 'Menu';
+  Self.Alignment := paLeftJustify;
 end;
 
 procedure TPraButtonStyle.CreateButtonPrimary;
@@ -721,6 +734,9 @@ begin
 
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  Self.Caption := 'Print';
+  Self.Alignment := paLeftJustify;
 end;
 
 procedure TPraButtonStyle.CreateButtonReport;
@@ -742,6 +758,9 @@ begin
 
   Height := FPraButtonStyleTemplateType.GetSizeHeight;
   Width := FPraButtonStyleTemplateType.GetSizeWidth;
+
+  Self.Caption := 'Save';
+  Self.Alignment := paLeftJustify;
 end;
 
 procedure TPraButtonStyle.CreateButtonSecondary;

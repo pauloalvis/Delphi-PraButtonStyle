@@ -74,7 +74,8 @@ implementation
 
 uses
   PraUtils,
-  System.SysUtils;
+  System.SysUtils,
+  PraConsts;
 
 constructor TPraButtonStyleEmail.Create;
 begin
@@ -133,12 +134,12 @@ end;
 
 function TPraButtonStyleEmail.GetSizeHeight: Smallint;
 begin
-  result := 41;
+  result := BUTTON_STYLE_TEMPLATE_SIZE_HEIGHT;
 end;
 
 function TPraButtonStyleEmail.GetSizeWidth: Smallint;
 begin
-  result := 41;
+  result := BUTTON_STYLE_TEMPLATE_SIZE_WIDTH;
 end;
 
 class function TPraButtonStyleEmail.New: iPraButtonStyleTemplateType;

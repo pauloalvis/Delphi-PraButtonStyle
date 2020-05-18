@@ -74,7 +74,8 @@ implementation
 
 uses
   PraUtils,
-  System.SysUtils;
+  System.SysUtils,
+  PraConsts;
 
 constructor TPraButtonStyleGear.Create;
 begin
@@ -133,12 +134,12 @@ end;
 
 function TPraButtonStyleGear.GetSizeHeight: Smallint;
 begin
-  result := 41;
+  result := BUTTON_STYLE_TEMPLATE_SIZE_HEIGHT;
 end;
 
 function TPraButtonStyleGear.GetSizeWidth: Smallint;
 begin
-  result := 41;
+  result := BUTTON_STYLE_TEMPLATE_SIZE_WIDTH;
 end;
 
 class function TPraButtonStyleGear.New: iPraButtonStyleTemplateType;

@@ -111,7 +111,7 @@ implementation
 
 uses
   System.SysUtils,
-  PraUtils;
+  PraConsts;
 
 constructor TPraFontConfiguration.Create;
 begin
@@ -243,12 +243,12 @@ end;
 
 function TPraButtonStyleTemplateGear.GetSizeHeight: Smallint;
 begin
-  result := 32;
+  result := BUTTON_STYLE_TEMPLATE_SIZE_HEIGHT;
 end;
 
 function TPraButtonStyleTemplateGear.GetSizeWidth: Smallint;
 begin
-  result := 90;
+  result := BUTTON_STYLE_TEMPLATE_SIZE_WIDTH;
 end;
 
 class function TPraButtonStyleTemplateGear.New: iPraButtonStyleTemplate;

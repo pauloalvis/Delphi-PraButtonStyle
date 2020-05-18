@@ -35,9 +35,12 @@ unit PraConsts;
 interface
 
 const
-  PraTitleDialog = 'Pra Components';
-  PraAboutlicenseStatus = 'Open Source - Free Version';
-  Version = '2.00';
+  PRATITLEDIALOG = 'Pra Components';
+  PRAABOUTLICENSESTATUS = 'Open Source - Free Version';
+  VERSION = '2.00';
+
+  BUTTON_STYLE_TEMPLATE_SIZE_HEIGHT = 32;
+  BUTTON_STYLE_TEMPLATE_SIZE_WIDTH = 90;
 
 implementation
 

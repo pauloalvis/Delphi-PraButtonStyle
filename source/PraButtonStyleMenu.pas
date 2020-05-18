@@ -74,7 +74,8 @@ implementation
 
 uses
   PraUtils,
-  System.SysUtils;
+  System.SysUtils,
+  PraConsts;
 
 constructor TPraButtonStyleMenu.Create;
 begin
@@ -133,12 +134,12 @@ end;
 
 function TPraButtonStyleMenu.GetSizeHeight: Smallint;
 begin
-  result := 41;
+  result := BUTTON_STYLE_TEMPLATE_SIZE_HEIGHT;
 end;
 
 function TPraButtonStyleMenu.GetSizeWidth: Smallint;
 begin
-  result := 41;
+  result := BUTTON_STYLE_TEMPLATE_SIZE_WIDTH;
 end;
 
 class function TPraButtonStyleMenu.New: iPraButtonStyleTemplateType;
