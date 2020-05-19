@@ -250,7 +250,7 @@ type
     property CanFocus: Boolean read GetCanFocus;
 
     procedure SetFocus;
-    procedure click; override;
+    procedure Click; override;
     procedure Assign(Source: TPersistent); override;
     procedure SetBounds(ALeft, ATop, AWidth, AHeight: Integer); override;
 
@@ -410,7 +410,7 @@ begin
   inherited;
 end;
 
-procedure TPraButtonStyle.click;
+procedure TPraButtonStyle.Click;
 begin
   inherited;
 end;
@@ -842,7 +842,7 @@ begin
     FState := bsDown;
     invalidate;
 
-    Self.click;
+    Self.Click;
   end;
 end;
 
