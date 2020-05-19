@@ -1213,6 +1213,9 @@ end;
 
 procedure TPraButtonStyle.SetPictureTemplate;
 begin
+  if not Assigned((FPraButtonStyleTemplateType)) then
+    Exit;
+
   if StyleOutline then
   begin
     Picture.Assign(FPraButtonStyleTemplateType.GetPictureStyleOutline);
