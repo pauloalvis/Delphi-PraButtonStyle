@@ -37,7 +37,7 @@ interface
 const
   PRATITLEDIALOG = 'Pra Components';
   PRAABOUTLICENSESTATUS = 'Open Source - Free Version';
-  VERSION = '2.00';
+  VERSION = '2.01';
 
   BUTTON_STYLE_TEMPLATE_SIZE_HEIGHT = 32;
   BUTTON_STYLE_TEMPLATE_SIZE_WIDTH = 90;

@@ -47,6 +47,7 @@ uses
 
 type
   TPraAlignment = (paLeftJustify, paCenter);
+  TPictureLayout = (plGraphicCenter, plGraphicBottom, plGraphicTop);
   TPraButtonStyleType = (stRoundRect, stRectangle);
   TPraButtonStyleStyle = (bsCustom, bsPrimary, bsSecondary, bsSuccess, bsDanger, bsWarning, bsInfo, bsLight, bsDark);
   TTemplateStyle = (tsNone = 0, tsSave = 1, tsCancel = 2, tsEdit = 3, tsDelete = 4, tsPrint = 5, tsGear = 6, tsMenu = 7, tsHeart = 8, tsEmail = 9, tsInsert = 10, tsBack = 11, tsClose = 12,
@@ -126,6 +127,7 @@ type
     FStyleOutline: Boolean;
     FAboutInfo: String;
     FTemplateStyle: TTemplateStyle;
+    FPictureLayout: TPictureLayout;
 
     procedure SetPen(Value: TPen);
     procedure SetPenDown(const Value: TPen);
@@ -236,6 +238,8 @@ type
     procedure CreateButtonDefault;
     procedure SetSize(const AHeight, AWidth: Integer);
     function isTemplateStyle: Boolean;
+    function IsPictureLayout: Boolean;
+    procedure SetPictureLayout(const Value: TPictureLayout);
   protected
     procedure DoKeyUp;
     procedure Paint; override;
@@ -322,6 +326,7 @@ type
     property StyleOutline: Boolean read FStyleOutline write SetStyleOutline stored IsStyleOutline default false;
 
     property TemplateStyle: TTemplateStyle read FTemplateStyle write SetTemplateStyle stored IsStoredTemplateStyle default tsNone;
+    property PictureLayout: TPictureLayout read FPictureLayout write SetPictureLayout stored IsPictureLayout default plGraphicCenter;
 
     property AboutInfo: String Read FAboutInfo Write FAboutInfo Stored false;
   end;
@@ -533,6 +538,7 @@ begin
   FControllerStyleTemplate := false;
 
   FStyleOutline := false;
+  FPictureLayout := plGraphicCenter;
 
   CreateButtonDefault;
 end;
@@ -947,6 +953,11 @@ begin
   result := PictureCenter <> false;
 end;
 
+function TPraButtonStyle.IsPictureLayout: Boolean;
+begin
+  result := PictureLayout <> plGraphicCenter;
+end;
+
 function TPraButtonStyle.IsPictureMarginLeft: Boolean;
 begin
   result := PictureMarginLeft <> 3;
@@ -984,7 +995,7 @@ end;
 
 procedure TPraButtonStyle.Paint;
 var
-  X, Y, w, h: Integer;
+  ClientSize, X, Y, w, h: Integer;
 begin
   inherited;
 
@@ -1038,10 +1049,19 @@ begin
     end;
 
     X := GetPictureMarginLeft;
-    if FPictureCenter and (Caption = '') then
+    if (FPictureCenter and (Caption = '') or (FPictureLayout <> plGraphicCenter)) then
       X := (ClientWidth - GetPictureWidth) div 2;
 
-    h := (ClientHeight - GetPictureHeight) div 2;
+    ClientSize := ClientHeight - GetPictureHeight;
+    case PictureLayout of
+      plGraphicCenter:
+        h := ClientSize div 2;
+      plGraphicBottom:
+        h := (ClientSize + Canvas.TextHeight(Caption)) div 2;
+      plGraphicTop:
+        h := (ClientSize - Canvas.TextHeight(Caption)) div 2;
+    end;
+
     if not(Enabled) then
     begin
       if Assigned(PictureDisabled.Graphic) then
@@ -1063,7 +1083,7 @@ begin
     begin
       if Alignment = paCenter then
       begin
-        if Assigned(Picture.Graphic) or (Assigned(PictureFocused.Graphic) and (FMouseEnter or Focused)) then
+        if (Assigned(Picture.Graphic) or (Assigned(PictureFocused.Graphic) and (FMouseEnter or Focused))) and (FPictureLayout = plGraphicCenter) then
           X := (ClientWidth - (GetPictureWidth + PictureMarginLeft)) div 2
         else
           X := (ClientWidth - Canvas.TextWidth(Caption)) div 2
@@ -1071,7 +1091,16 @@ begin
       else
         X := GetPictureWidth + PictureMarginLeft + GetSpacing;
 
-      Y := (ClientHeight - Canvas.TextHeight(Caption)) div 2;
+      ClientSize := ClientHeight - Canvas.TextHeight(Caption);
+      case PictureLayout of
+        plGraphicCenter:
+          Y := ClientSize div 2;
+        plGraphicBottom:
+          Y := ((ClientSize - GetPictureHeight) div 2) - 2 + Spacing;
+        plGraphicTop:
+          Y := ((ClientSize + GetPictureHeight) div 2) - 2 + Spacing;
+      end;
+
       TextOut(X, Y, Caption);
     end;
   end;
@@ -1242,6 +1271,15 @@ end;
 procedure TPraButtonStyle.SetPictureFocused(const Value: TPicture);
 begin
   FPictureFocused.Assign(Value);
+end;
+
+procedure TPraButtonStyle.SetPictureLayout(const Value: TPictureLayout);
+begin
+  if FPictureLayout <> Value then
+  begin
+    FPictureLayout := Value;
+    invalidate;
+  end;
 end;
 
 procedure TPraButtonStyle.SetRadius(const Value: SmallInt);
