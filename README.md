@@ -28,6 +28,10 @@
   <img width="600" height="400" src="demo/demo4/demo4.gif">
 </p>
 
+<p align="center">
+  <img width="600" height="400" src="demo/demo5/demo5.png">
+</p>
+
 <hr />
 
 ## Features
