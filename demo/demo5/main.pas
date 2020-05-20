@@ -18,6 +18,11 @@ type
     PraButtonStyle8: TPraButtonStyle;
     PraButtonStyle9: TPraButtonStyle;
     PraButtonStyle10: TPraButtonStyle;
+    PraButtonStyle11: TPraButtonStyle;
+    PraButtonStyle12: TPraButtonStyle;
+    PraButtonStyle13: TPraButtonStyle;
+    PraButtonStyle14: TPraButtonStyle;
+    PraButtonStyle20: TPraButtonStyle;
   private
     { Private declarations }
   public
