@@ -80,6 +80,8 @@
 
 **TemplateStyle:** Templates pre-configured
 
+**PictureLayout:** Use To Change Position Picture no button
+
 ## Getting started
 
 Add the folder 
