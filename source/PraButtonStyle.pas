@@ -129,6 +129,11 @@ type
     FTemplateStyle: TTemplateStyle;
     FPictureLayout: TPictureLayout;
 
+    FImageList: TImageList;
+    FImageIndexPicture: Integer;
+    FImageIndexPictureFocused: Integer;
+    FImageIndexPictureDisabled: Integer;
+
     procedure SetPen(Value: TPen);
     procedure SetPenDown(const Value: TPen);
     procedure SetPenFocused(const Value: TPen);
@@ -240,6 +245,14 @@ type
     function isTemplateStyle: Boolean;
     function IsPictureLayout: Boolean;
     procedure SetPictureLayout(const Value: TPictureLayout);
+
+    procedure SetImageList(const Value: TImageList);
+    procedure SetImageIndexPicture(const Value: Integer);
+    procedure SetImageIndexPictureFocused(const Value: Integer);
+    procedure SetImageIndexPictureDisabled(const Value: Integer);
+    function IsImageIndexPicture: Boolean;
+    function IsImageIndexPictureDisabled: Boolean;
+    function IsImageIndexPictureFocused: Boolean;
   protected
     procedure DoKeyUp;
     procedure Paint; override;
@@ -249,6 +262,7 @@ type
     procedure ChangeScale(M, D: Integer; isDpiChange: Boolean); override;
     procedure CMMouseEnter(var Message: TNotifyEvent); message CM_MOUSEENTER;
     procedure CMMouseLeave(var Message: TNotifyEvent); message CM_MOUSELEAVE;
+    procedure Notification(AComponent: TComponent; Operation: TOperation); override;
   public
     property Focused: Boolean read GetFocused;
     property CanFocus: Boolean read GetCanFocus;
@@ -328,13 +342,18 @@ type
     property TemplateStyle: TTemplateStyle read FTemplateStyle write SetTemplateStyle stored IsStoredTemplateStyle default tsNone;
     property PictureLayout: TPictureLayout read FPictureLayout write SetPictureLayout stored IsPictureLayout default plGraphicCenter;
 
+    property ImageList: TImageList read FImageList write SetImageList;
+
+    property ImageIndexPicture: Integer read FImageIndexPicture write SetImageIndexPicture stored IsImageIndexPicture default -1;
+    property ImageIndexPictureFocused: Integer read FImageIndexPictureFocused write SetImageIndexPictureFocused stored IsImageIndexPictureFocused default -1;
+    property ImageIndexPictureDisabled: Integer read FImageIndexPictureDisabled write SetImageIndexPictureDisabled stored IsImageIndexPictureDisabled default -1;
+
     property AboutInfo: String Read FAboutInfo Write FAboutInfo Stored false;
   end;
 
 implementation
 
-uses
-  Vcl.Forms,
+uses Vcl.Forms,
   PraButtonStyleSave,
   PraButtonStyleEdit,
   PraButtonStyleGear,
@@ -539,6 +558,10 @@ begin
 
   FStyleOutline := false;
   FPictureLayout := plGraphicCenter;
+
+  ImageIndexPicture := -1;
+  ImageIndexPictureFocused := -1;
+  ImageIndexPictureDisabled := -1;
 
   CreateButtonDefault;
 end;
@@ -943,6 +966,21 @@ begin
   result := FClickOnEnter <> true;
 end;
 
+function TPraButtonStyle.IsImageIndexPicture: Boolean;
+begin
+  result := ImageIndexPicture <> -1;
+end;
+
+function TPraButtonStyle.IsImageIndexPictureDisabled: Boolean;
+begin
+  result := ImageIndexPictureDisabled <> -1;
+end;
+
+function TPraButtonStyle.IsImageIndexPictureFocused: Boolean;
+begin
+  result := ImageIndexPictureFocused <> -1;
+end;
+
 function TPraButtonStyle.IsStyleOutline: Boolean;
 begin
   result := StyleOutline <> false;
@@ -1176,6 +1214,64 @@ end;
 procedure TPraButtonStyle.SetFontFocused(const Value: TPraButtonFont);
 begin
   FFontFocused.Assign(Value);
+end;
+
+procedure TPraButtonStyle.SetImageIndexPicture(const Value: Integer);
+begin
+  if FImageIndexPicture <> Value then
+  begin
+    FImageIndexPicture := Value;
+
+    if Assigned(ImageList) then
+    begin
+      FPicture.Graphic := nil;
+      ImageList.GetBitmap(Value, FPicture.bitmap);
+
+      invalidate;
+    end;
+  end;
+end;
+
+procedure TPraButtonStyle.SetImageIndexPictureDisabled(const Value: Integer);
+begin
+  if FImageIndexPictureDisabled <> Value then
+  begin
+    FImageIndexPictureDisabled := Value;
+
+    if Assigned(ImageList) then
+    begin
+      FPictureDisabled.Graphic := nil;
+      ImageList.GetBitmap(Value, FPictureDisabled.bitmap);
+
+      invalidate;
+    end;
+  end;
+end;
+
+procedure TPraButtonStyle.SetImageIndexPictureFocused(const Value: Integer);
+begin
+  if FImageIndexPictureFocused <> Value then
+  begin
+    FImageIndexPictureFocused := Value;
+
+    if Assigned(ImageList) then
+    begin
+      FPictureFocused.Graphic := nil;
+      ImageList.GetBitmap(Value, FPictureFocused.bitmap);
+
+      invalidate;
+    end;
+  end;
+end;
+
+procedure TPraButtonStyle.SetImageList(const Value: TImageList);
+begin
+  if FImageList <> Value then
+  begin
+    FImageList := Value;
+
+    invalidate;
+  end;
 end;
 
 procedure TPraButtonStyle.SetStyleOutline(const Value: Boolean);
@@ -1524,6 +1620,17 @@ begin
   FPraButtonStyleTemplate := TPraButtonStyleTemplateWarning.New;
 
   ApplyTemplate;
+end;
+
+procedure TPraButtonStyle.Notification(AComponent: TComponent; Operation: TOperation);
+begin
+  inherited Notification(AComponent, Operation);
+
+  if Operation = opRemove then
+  begin
+    if AComponent = ImageList then
+      ImageList := nil;
+  end;
 end;
 
 procedure TPraButtonStyle.WMEraseBkgnd(var Message: TWMEraseBkGnd);
