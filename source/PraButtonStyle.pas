@@ -126,6 +126,7 @@ type
     FStyle: TPraButtonStyleStyle;
     FStyleOutline: Boolean;
     FAboutInfo: String;
+    FWordWrap: Boolean;
     FTemplateStyle: TTemplateStyle;
     FPictureLayout: TPictureLayout;
 
@@ -256,6 +257,7 @@ type
   protected
     procedure DoKeyUp;
     procedure Paint; override;
+    function DrawTextCentered(Canvas: TCanvas; const R: TRect; S: String): Integer;
     procedure SetParent(AParent: TWinControl); override;
     procedure DoKeyDown(var Key: Word; Shift: TShiftState);
     procedure CMEnter(var Message: TCMEnter); message CM_ENTER;
@@ -349,6 +351,7 @@ type
     property ImageIndexPictureDisabled: Integer read FImageIndexPictureDisabled write SetImageIndexPictureDisabled stored IsImageIndexPictureDisabled default -1;
 
     property AboutInfo: String Read FAboutInfo Write FAboutInfo Stored false;
+    property Wordwrap: Boolean Read FWordWrap Write FWordWrap default False;
   end;
 
 implementation
@@ -1139,9 +1142,32 @@ begin
           Y := ((ClientSize + GetPictureHeight) div 2) - 2 + Spacing;
       end;
 
-      TextOut(X, Y, Caption);
+      if WordWrap then
+        DrawTextCentered(Canvas, Rect(X, 0, Self.Left + Self.Width, Self.Height - Spacing), Caption)
+      else
+        TextOut(X, Y, Caption);
     end;
   end;
+end;
+
+function TPraButtonStyle.DrawTextCentered(Canvas: TCanvas; const R: TRect; S: String): Integer;
+var
+  DrawRect  : TRect;
+  DrawFlags : Cardinal;
+  DrawParams: TDrawTextParams;
+begin
+  DrawRect  := R;
+  DrawFlags := DT_WORDBREAK or DT_VCENTER;
+  DrawText(Canvas.Handle, PChar(S), -1, DrawRect, DrawFlags or DT_CALCRECT);
+  DrawRect.Right := R.Right;
+  if DrawRect.Bottom < R.Bottom then
+    OffsetRect(DrawRect, 0, (R.Bottom - DrawRect.Bottom) div 2)
+  else
+    DrawRect.Bottom := R.Bottom;
+  ZeroMemory(@DrawParams, SizeOf(DrawParams));
+  DrawParams.cbSize := SizeOf(DrawParams);
+  DrawTextEx(Canvas.Handle, PChar(S), -1, DrawRect, DrawFlags, @DrawParams);
+  result := DrawParams.uiLengthDrawn;
 end;
 
 procedure TPraButtonStyle.SetAlignment(const Value: TPraAlignment);
