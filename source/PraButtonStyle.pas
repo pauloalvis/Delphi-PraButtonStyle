@@ -1142,7 +1142,7 @@ begin
           Y := ((ClientSize + GetPictureHeight) div 2) - 2 + Spacing;
       end;
 
-      if WordWrap then
+      if FWordWrap then
         DrawTextCentered(Canvas, Rect(X, 0, Self.Left + Self.Width, Self.Height - Spacing), Caption)
       else
         TextOut(X, Y, Caption);
