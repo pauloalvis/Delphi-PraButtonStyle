@@ -1,10 +1,10 @@
 <h1 align="center">
 <br>
-  PraButtonStyle
+  PraButtonStyle in (Delphi, Lazarus)
 <br>
 </h1>
 
-<p align="center">Button with very attractive layout, standard bootstrap to Delphi VCL </p>
+<p align="center">Button with very attractive layout, standard bootstrap to Delphi/Lazarus VCL </p>
 
 <p align="center">
   <a href="https://opensource.org/licenses/MIT">
@@ -37,6 +37,7 @@
 ## Features
 
 - **Delphi-VCL** — Tested on the latest delphi.
+- **Lazarus-VCL** — preparing and converting to lazarus. compiled delphi; developing lazarus.
 
 ## Documentation
 
