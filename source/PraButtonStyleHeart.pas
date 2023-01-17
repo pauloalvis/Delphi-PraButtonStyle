@@ -35,8 +35,14 @@ unit PraButtonStyleHeart;
 interface
 
 uses
-  PraInterfaces,
-  vcl.Graphics;
+
+{$IF DEFINED(FPC)}
+PraInterfaces,
+Graphics
+{$ELSE} // DEFINE DELPHI
+PraInterfaces,
+vcl.Graphics
+{$ENDIF} ;
 
 type
   TPraButtonStyleHeart = class(TInterfacedObject, iPraButtonStyleTemplateType)
@@ -73,9 +79,15 @@ type
 implementation
 
 uses
+{$IF DEFINED(FPC)}
+  PraUtils,
+  SysUtils,
+  PraConsts
+{$ELSE} // DEFINE DELPHI
   PraUtils,
   System.SysUtils,
-  PraConsts;
+  PraConsts
+{$ENDIF} ;
 
 constructor TPraButtonStyleHeart.Create;
 begin

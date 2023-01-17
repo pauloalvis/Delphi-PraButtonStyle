@@ -2,6 +2,7 @@
 // Delphi PraButtonStyle
 //
 // Copyright (c) 2020-2020 Paulo Roberto Alves
+// convertido para Lazarus FCP 2023 Francisco Aurino
 //
 // https://github.com/pauloalvis/Delphi-PraButtonStyle
 //
@@ -34,6 +35,21 @@ unit PraButtonStyle;
 interface
 
 uses
+
+
+{$IF DEFINED(FPC)}
+  Graphics,
+  buttons,
+  SysUtils,
+  Classes,
+  System.UITypes,
+LCLStrConsts, LCLType, LCLProc, LMessages, LCLIntf, InterfaceBase,
+  Controls,
+  Messages,
+  Windows,
+  Math,
+  PraInterfaces
+{$ELSE} // DEFINE DELPHI
   Vcl.Graphics,
   Vcl.buttons,
   System.SysUtils,
@@ -43,7 +59,9 @@ uses
   Winapi.Messages,
   Winapi.Windows,
   System.Math,
-  PraInterfaces;
+  PraInterfaces
+{$ENDIF} ;
+
 
 type
   TPraAlignment = (paLeftJustify, paCenter);
@@ -266,7 +284,6 @@ type
   public
     property Focused: Boolean read GetFocused;
     property CanFocus: Boolean read GetCanFocus;
-
     procedure SetFocus;
     procedure Click; override;
     procedure Assign(Source: TPersistent); override;
@@ -286,20 +303,23 @@ type
     property Constraints;
     property ParentShowHint;
     property ShowHint;
-    property Touch;
+    //property Touch ;
+    {$IF DEFINED(DELPHI)} property Touch , {$ENDIF}
     property Visible;
     property OnContextPopup;
     property OnDragDrop;
     property OnDragOver;
     property OnEndDock;
     property OnEndDrag;
-    property OnMouseActivate;
+    //property OnMouseActivate;
+    {$IF DEFINED(DELPHI)} property OnMouseActivate , {$ENDIF}
     property OnMouseDown;
     property OnMouseEnter;
     property OnMouseLeave;
     property OnMouseMove;
     property OnMouseUp;
-    property OnGesture;
+   // property OnGesture;
+   {$IF DEFINED(DELPHI)} property OnGesture , {$ENDIF}
     property OnStartDock;
     property OnStartDrag;
     property OnClick;
@@ -353,7 +373,14 @@ type
 
 implementation
 
-uses Vcl.Forms,
+uses
+
+  {$IF DEFINED(FPC)}
+  Forms,
+  {$ELSE} // DEFINE DELPHI
+  Vcl.Forms,
+  {$ENDIF}
+
   PraButtonStyleSave,
   PraButtonStyleEdit,
   PraButtonStyleGear,
