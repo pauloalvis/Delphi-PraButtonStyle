@@ -35,18 +35,35 @@ unit PraUtils;
 interface
 
 uses
-  Vcl.Imaging.pngimage;
 
-function GetPictureOfResource(const AValue: String): TPngImage;
+  {$IF DEFINED(FPC)}
+    Graphics,
+    Classes,
+    SysUtils,
+    RegExpr,
+    Generics.Collections
+
+  {$ELSE} // DEFINE DELPHI
+   Vcl.Imaging.pngimage
+  {$ENDIF} ;
+
+
+
+function GetPictureOfResource(const AValue: String): {$IF DEFINED(FPC)} TPortableNetworkGraphic {$ELSE} TPngImage {$ENDIF} ;
 
 implementation
 
-function GetPictureOfResource(const AValue: String): TPngImage;
+function GetPictureOfResource(const AValue: String): {$IF DEFINED(FPC)} TPortableNetworkGraphic {$ELSE} TPngImage {$ENDIF} ;
 var
-  lPNG: TPngImage;
+  lPNG: {$IF DEFINED(FPC)} TPortableNetworkGraphic {$ELSE} TPngImage {$ENDIF} ;
 begin
-  lPNG := TPngImage.Create;
-  lPNG.LoadFromResourceName(SysInit.HInstance, AValue);
+    lPNG := {$IF DEFINED(FPC)} TPortableNetworkGraphic.Create {$ELSE} TPngImage.Create {$ENDIF} ;
+    {$IF DEFINED(FPC)}
+    // lPNG.LoadFromResourceName(HInstance, avalue)
+    {$ELSE}
+    lPNG.LoadFromResourceName(SysInit.HInstance, AValue);
+    {$ENDIF} ;
+
   result := lPNG;
 end;
 

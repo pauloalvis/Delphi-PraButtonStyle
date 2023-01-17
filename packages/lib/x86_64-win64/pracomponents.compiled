@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="C:\fpcupdeluxe\fpc\bin\x86_64-win64\fpc.exe" Date="1436308860"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq -FiC:\componentes\Delphi-PraButtonStyle\source\commom\view -FuC:\componentes\Delphi-PraButtonStyle\source -FuC:\componentes\Delphi-PraButtonStyle\source\commom -FuC:\componentes\Delphi-PraButtonStyle\source\commom\view -FuC:\fpcupdeluxe\lazarus\packager\units\x86_64-win64 -FuC:\fpcupdeluxe\lazarus\components\lazutils\lib\x86_64-win64 -FuC:\fpcupdeluxe\lazarus\components\buildintf\units\x86_64-win64 -FuC:\fpcupdeluxe\lazarus\components\freetype\lib\x86_64-win64 -FuC:\fpcupdeluxe\lazarus\lcl\units\x86_64-win64 -FuC:\fpcupdeluxe\lazarus\lcl\units\x86_64-win64\win32 -FuC:\fpcupdeluxe\lazarus\components\lazcontrols\lib\x86_64-win64\win32 -FuC:\fpcupdeluxe\lazarus\components\ideintf\units\x86_64-win64\win32 -FuC:\componentes\Delphi-PraButtonStyle\packages\ -FUC:\componentes\Delphi-PraButtonStyle\packages\lib\x86_64-win64\ -dLCL -dLCLwin32 pracomponents.pas"/>
+  <Complete Value="False"/>
+</CONFIG>

@@ -35,12 +35,23 @@ unit PraRegister;
 interface
 
 uses
+
+{$IF DEFINED(FPC)}
+  ShellApi,
+  // ToolsAPI,
+  // DesignIntf,
+  // DesignEditors,
+  //Graphics,
+  Classes
+{$ELSE} // DEFINE DELPHI
   ShellApi,
   ToolsAPI,
   DesignIntf,
   DesignEditors,
   Vcl.Graphics,
   System.Classes;
+
+{$ENDIF}
 
 type
   TPraComponentProperty = class(TStringProperty)

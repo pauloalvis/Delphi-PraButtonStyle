@@ -1,0 +1,48 @@
+unit fkPraButtonStyle;
+{$warn 5023 off : no warning about unused units}
+interface
+
+uses
+  PraButtonStyle, LazarusPackageIntf;
+
+implementation
+
+procedure Register;
+begin
+  RegisterUnit('PraButtonStyle', @PraButtonStyle.Register);
+end;
+
+initialization
+  RegisterPackage('fkPraButtonStyle', @Register);
+end.
+
+(*{$mode ObjFPC}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs;
+
+type
+  TPraButtonStyle = class(PraComponents)
+  private
+
+  protected
+
+  public
+
+  published
+
+  end;
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('PraComponents',[TPraButtonStyle]);
+end;
+
+end.
+*)
