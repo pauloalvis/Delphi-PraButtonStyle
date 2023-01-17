@@ -29,8 +29,7 @@
 // SOFTWARE.
 //
 // ***************************************************************************
-{$mode delphi}
-{$ifdef mswindows} {$apptype console}{$endif}
+
 unit PraButtonStyle;
 
 interface
