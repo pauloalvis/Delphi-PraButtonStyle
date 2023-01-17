@@ -98,7 +98,6 @@ Add the folder
 directory to the Library path in Delphi inside the Tools->Options menu. 
 The Options window will show up and there you have to click on Environment Options->Delphi Options->Library, select the right platform (32 or 64 bits) and add directory in Library path.
 
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/licenses/MIT) page for details.
