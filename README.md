@@ -1,10 +1,10 @@
 <h1 align="center">
 <br>
-  PraButtonStyle
+  PraButtonStyle in (Delphi, Lazarus)
 <br>
 </h1>
 
-<p align="center">Button with very attractive layout, standard bootstrap to Delphi VCL </p>
+<p align="center">Button with very attractive layout, standard bootstrap to Delphi/Lazarus VCL </p>
 
 <p align="center">
   <a href="https://opensource.org/licenses/MIT">
@@ -37,6 +37,7 @@
 ## Features
 
 - **Delphi-VCL** — Tested on the latest delphi.
+- **Lazarus-VCL** — preparing and converting to lazarus. compiled delphi; developing lazarus.
 
 ## Documentation
 
@@ -96,7 +97,6 @@ Add the folder
 
 directory to the Library path in Delphi inside the Tools->Options menu. 
 The Options window will show up and there you have to click on Environment Options->Delphi Options->Library, select the right platform (32 or 64 bits) and add directory in Library path.
-
 
 ## License
 
