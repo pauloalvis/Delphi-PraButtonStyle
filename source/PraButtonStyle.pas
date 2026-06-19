@@ -605,17 +605,21 @@ end;
 procedure TPraButtonStyle.CreateButtonDanger;
 begin
   LoadingTemplateDanger;
-
-  Height := FPraButtonStyleTemplate.GetSizeHeight;
-  Width := FPraButtonStyleTemplate.GetSizeWidth;
+  if not (csReading in ComponentState) then
+  begin
+    Height := FPraButtonStyleTemplate.GetSizeHeight;
+    Width  := FPraButtonStyleTemplate.GetSizeWidth;
+  end;
 end;
 
 procedure TPraButtonStyle.CreateButtonDark;
 begin
   LoadingTemplateDark;
-
-  Height := FPraButtonStyleTemplate.GetSizeHeight;
-  Width := FPraButtonStyleTemplate.GetSizeWidth;
+  if not (csReading in ComponentState) then
+  begin
+    Height := FPraButtonStyleTemplate.GetSizeHeight;
+    Width  := FPraButtonStyleTemplate.GetSizeWidth;
+  end;
 end;
 
 procedure TPraButtonStyle.CreateButtonDefault;
@@ -711,9 +715,11 @@ end;
 procedure TPraButtonStyle.CreateButtonInfo;
 begin
   LoadingTemplateInfo;
-
-  Height := FPraButtonStyleTemplate.GetSizeHeight;
-  Width := FPraButtonStyleTemplate.GetSizeWidth;
+  if not (csReading in ComponentState) then
+  begin
+    Height := FPraButtonStyleTemplate.GetSizeHeight;
+    Width  := FPraButtonStyleTemplate.GetSizeWidth;
+  end;
 end;
 
 procedure TPraButtonStyle.CreateButtonInsert;
@@ -731,9 +737,11 @@ end;
 procedure TPraButtonStyle.CreateButtonLight;
 begin
   LoadingTemplateLight;
-
-  Height := FPraButtonStyleTemplate.GetSizeHeight;
-  Width := FPraButtonStyleTemplate.GetSizeWidth;
+  if not (csReading in ComponentState) then
+  begin
+    Height := FPraButtonStyleTemplate.GetSizeHeight;
+    Width  := FPraButtonStyleTemplate.GetSizeWidth;
+  end;
 end;
 
 procedure TPraButtonStyle.CreateButtonMenu;
@@ -751,9 +759,11 @@ end;
 procedure TPraButtonStyle.CreateButtonPrimary;
 begin
   LoadingTemplatePrimary;
-
-  Height := FPraButtonStyleTemplate.GetSizeHeight;
-  Width := FPraButtonStyleTemplate.GetSizeWidth;
+  if not (csReading in ComponentState) then
+  begin
+    Height := FPraButtonStyleTemplate.GetSizeHeight;
+    Width  := FPraButtonStyleTemplate.GetSizeWidth;
+  end;
 end;
 
 procedure TPraButtonStyle.CreateButtonPrint;
@@ -795,25 +805,31 @@ end;
 procedure TPraButtonStyle.CreateButtonSecondary;
 begin
   LoadingTemplateSecondary;
-
-  Height := FPraButtonStyleTemplate.GetSizeHeight;
-  Width := FPraButtonStyleTemplate.GetSizeWidth;
+  if not (csReading in ComponentState) then
+  begin
+    Height := FPraButtonStyleTemplate.GetSizeHeight;
+    Width  := FPraButtonStyleTemplate.GetSizeWidth;
+  end;
 end;
 
 procedure TPraButtonStyle.CreateButtonSuccess;
 begin
   LoadingTemplateSuccess;
-
-  Height := FPraButtonStyleTemplate.GetSizeHeight;
-  Width := FPraButtonStyleTemplate.GetSizeWidth;
+  if not (csReading in ComponentState) then
+  begin
+    Height := FPraButtonStyleTemplate.GetSizeHeight;
+    Width  := FPraButtonStyleTemplate.GetSizeWidth;
+  end;
 end;
 
 procedure TPraButtonStyle.CreateButtonWarning;
 begin
   LoadingTemplateWarning;
-
-  Height := FPraButtonStyleTemplate.GetSizeHeight;
-  Width := FPraButtonStyleTemplate.GetSizeWidth;
+  if not (csReading in ComponentState) then
+  begin
+    Height := FPraButtonStyleTemplate.GetSizeHeight;
+    Width  := FPraButtonStyleTemplate.GetSizeWidth;
+  end;
 end;
 
 procedure TPraButtonStyle.CreateFocusControl(AOwner: TComponent; AParent: TWinControl);
@@ -1458,7 +1474,8 @@ begin
 
   if Value <> bsCustom then
   begin
-    SetSize(32, 90);
+    if not (csReading in ComponentState) then
+      SetSize(32, 90);
 
     if StyleOutline then
       StyleOutlineConfig;
