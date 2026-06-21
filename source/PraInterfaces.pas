@@ -35,7 +35,16 @@ unit PraInterfaces;
 interface
 
 uses
-  Vcl.Graphics;
+  {$IF DEFINED(FPC)}
+    Graphics,
+    Classes,
+    SysUtils,
+    RegExpr,
+    Generics.Collections
+  {$ELSE} // DEFINE DELPHI
+   Vcl.Graphics
+  {$ENDIF} ;
+
 
 type
   iPraPenConfigurationCommon = interface

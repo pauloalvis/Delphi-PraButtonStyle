@@ -1,0 +1,31 @@
+unit PraButtonStyle1;
+
+{$mode ObjFPC}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs;
+
+type
+  TPraButtonStyle1 = class(tTPraButtonStyle)
+  private
+
+  protected
+
+  public
+
+  published
+
+  end;
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('pracomponents',[TPraButtonStyle1]);
+end;
+
+end.

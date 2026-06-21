@@ -36,8 +36,11 @@ interface
 
 uses
   PraInterfaces,
-  Vcl.Graphics;
-
+{$IF DEFINED(FPC)}
+  Graphics
+{$ELSE} // DEFINE DELPHI
+ Vcl.Graphics
+{$ENDIF} ;
 type
   TPraButtonStyleBack = class(TInterfacedObject, iPraButtonStyleTemplateType)
   private
@@ -73,9 +76,17 @@ type
 implementation
 
 uses
+
+{$IF DEFINED(FPC)}
+  PraUtils,
+  SysUtils,
+  PraConsts
+{$ELSE} // DEFINE DELPHI
   PraUtils,
   System.SysUtils,
-  PraConsts;
+  PraConsts
+{$ENDIF} ;
+
 
 constructor TPraButtonStyleBack.Create;
 begin

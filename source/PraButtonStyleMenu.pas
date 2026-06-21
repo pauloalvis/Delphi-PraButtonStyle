@@ -35,9 +35,14 @@ unit PraButtonStyleMenu;
 interface
 
 uses
-  PraInterfaces,
-  Vcl.Graphics;
 
+{$IF DEFINED(FPC)}
+PraInterfaces,
+Graphics
+{$ELSE} // DEFINE DELPHI
+PraInterfaces,
+Vcl.Graphics
+{$ENDIF} ;
 type
   TPraButtonStyleMenu = class(TInterfacedObject, iPraButtonStyleTemplateType)
   private
@@ -73,9 +78,15 @@ type
 implementation
 
 uses
+{$IF DEFINED(FPC)}
+  PraUtils,
+  SysUtils,
+  PraConsts
+{$ELSE} // DEFINE DELPHI
   PraUtils,
   System.SysUtils,
-  PraConsts;
+  PraConsts
+{$ENDIF} ;
 
 constructor TPraButtonStyleMenu.Create;
 begin

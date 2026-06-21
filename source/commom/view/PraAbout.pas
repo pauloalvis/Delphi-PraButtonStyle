@@ -3,13 +3,27 @@ unit PraAbout;
 interface
 
 uses
+
+
+{$IF DEFINED(FPC)}
+  Windows,
+  Classes,
+  Controls,
+  Forms,
+  ExtCtrls,
+  StdCtrls,
+  Graphics
+  //TPortableNetworkGraphic
+{$ELSE} // DEFINE DELPHI
   Winapi.Windows,
   System.Classes,
   Vcl.Controls,
   Vcl.Forms,
   Vcl.ExtCtrls,
   Vcl.StdCtrls,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage
+{$ENDIF} ;
+
 
 type
   TFPraViewAbout = class(TForm)
@@ -35,8 +49,14 @@ var
 implementation
 
 uses
+
+{$IF DEFINED(FPC)}
+  ShellAPI,
+  PraConsts
+{$ELSE} // DEFINE DELPHI
   Winapi.ShellAPI,
-  PraConsts;
+  PraConsts
+{$ENDIF} ;
 
 {$R *.dfm}
 

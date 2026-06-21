@@ -1,0 +1,14 @@
+unit PraButtonStyle;
+{$warn 5023 off : no warning about unused units}
+interface
+uses
+  LazarusPackageIntf;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('PraComponents',[TPraButtonStyles]);
+end;
+
+end.

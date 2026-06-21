@@ -35,8 +35,14 @@ unit PraButtonStyleClose;
 interface
 
 uses
+
+{$IF DEFINED(FPC)}
   PraInterfaces,
-  Vcl.Graphics;
+  Graphics
+{$ELSE} // DEFINE DELPHI
+  PraInterfaces,
+  Vcl.Graphics
+{$ENDIF} ;
 
 type
   TPraButtonStyleClose = class(TInterfacedObject, iPraButtonStyleTemplateType)
@@ -73,9 +79,15 @@ type
 implementation
 
 uses
+{$IF DEFINED(FPC)}
+  PraUtils,
+  SysUtils,
+  PraConsts
+{$ELSE} // DEFINE DELPHI
   PraUtils,
   System.SysUtils,
-  PraConsts;
+  PraConsts
+{$ENDIF} ;
 
 constructor TPraButtonStyleClose.Create;
 begin

@@ -35,9 +35,13 @@ unit PraButtonStyleTemplateSuccess;
 interface
 
 uses
-  Vcl.Graphics,
-  PraInterfaces;
-
+  {$IF DEFINED(FPC)}
+  PraInterfaces,
+  Graphics
+  {$ELSE} // DEFINE DELPHI
+  PraInterfaces,
+  Vcl.Graphics
+  {$ENDIF} ;
 type
   TPraFontConfiguration = class(TInterfacedObject, iPraFontConfigurationCommon)
   private
@@ -110,8 +114,15 @@ type
 implementation
 
 uses
-  System.SysUtils,
-  PraConsts;
+  {$IF DEFINED(FPC)}
+    PraUtils,
+    SysUtils,
+    PraConsts
+  {$ELSE} // DEFINE DELPHI
+    PraUtils,
+    System.SysUtils,
+    PraConsts
+  {$ENDIF} ;
 
 constructor TPraFontConfiguration.Create;
 begin

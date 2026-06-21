@@ -35,8 +35,13 @@ unit PraButtonStyleReport;
 interface
 
 uses
+  {$IF DEFINED(FPC)}
   PraInterfaces,
-  Vcl.Graphics;
+  Graphics
+  {$ELSE} // DEFINE DELPHI
+  PraInterfaces,
+  Vcl.Graphics
+  {$ENDIF} ;
 
 type
   TPraButtonStyleReport = class(TInterfacedObject, iPraButtonStyleTemplateType)
@@ -73,10 +78,15 @@ type
 implementation
 
 uses
-  PraUtils,
-  System.SysUtils,
-  PraConsts;
-
+  {$IF DEFINED(FPC)}
+    PraUtils,
+    SysUtils,
+    PraConsts
+  {$ELSE} // DEFINE DELPHI
+    PraUtils,
+    System.SysUtils,
+    PraConsts
+  {$ENDIF} ;
 constructor TPraButtonStyleReport.Create;
 begin
   FPicture := TPicture.Create;

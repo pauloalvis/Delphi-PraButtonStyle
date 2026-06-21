@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="5">
+    <PathDelim Value="\"/>
+    <Name Value="pracomponents"/>
+    <Type Value="RunAndDesignTime"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <IncludeFiles Value="..\source\commom\view"/>
+        <OtherUnitFiles Value="..\source;..\source\commom;..\source\commom\view"/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Files>
+      <Item>
+        <Filename Value="fkprabuttonstyle.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="fkPraButtonStyle"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyle.pas"/>
+        <UnitName Value="PraButtonStyle"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleBack.pas"/>
+        <UnitName Value="PraButtonStyleBack"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleCancel.pas"/>
+        <UnitName Value="PraButtonStyleCancel"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleClose.pas"/>
+        <UnitName Value="PraButtonStyleClose"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleDelete.pas"/>
+        <UnitName Value="PraButtonStyleDelete"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleEdit.pas"/>
+        <UnitName Value="PraButtonStyleEdit"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleEmail.pas"/>
+        <UnitName Value="PraButtonStyleEmail"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleGear.pas"/>
+        <UnitName Value="PraButtonStyleGear"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleHeart.pas"/>
+        <UnitName Value="PraButtonStyleHeart"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleInsert.pas"/>
+        <UnitName Value="PraButtonStyleInsert"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleMenu.pas"/>
+        <UnitName Value="PraButtonStyleMenu"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStylePrint.pas"/>
+        <UnitName Value="PraButtonStylePrint"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleReport.pas"/>
+        <UnitName Value="PraButtonStyleReport"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleSave.pas"/>
+        <UnitName Value="PraButtonStyleSave"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleTemplateDanger.pas"/>
+        <UnitName Value="PraButtonStyleTemplateDanger"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleTemplateDark.pas"/>
+        <UnitName Value="PraButtonStyleTemplateDark"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleTemplateGear.pas"/>
+        <UnitName Value="PraButtonStyleTemplateGear"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleTemplateHeart.pas"/>
+        <UnitName Value="PraButtonStyleTemplateHeart"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleTemplateInfo.pas"/>
+        <UnitName Value="PraButtonStyleTemplateInfo"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleTemplateLight.pas"/>
+        <UnitName Value="PraButtonStyleTemplateLight"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleTemplatePrimary.pas"/>
+        <UnitName Value="PraButtonStyleTemplatePrimary"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleTemplateSecondary.pas"/>
+        <UnitName Value="PraButtonStyleTemplateSecondary"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleTemplateSuccess.pas"/>
+        <UnitName Value="PraButtonStyleTemplateSuccess"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraButtonStyleTemplateWarning.pas"/>
+        <UnitName Value="PraButtonStyleTemplateWarning"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\PraInterfaces.pas"/>
+        <UnitName Value="PraInterfaces"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\commom\PraConsts.pas"/>
+        <UnitName Value="PraConsts"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\commom\PraUtils.pas"/>
+        <UnitName Value="PraUtils"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\commom\view\PraAbout.dfm"/>
+        <Type Value="Text"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\commom\view\PraAbout.pas"/>
+        <UnitName Value="PraAbout"/>
+      </Item>
+      <Item>
+        <Filename Value="..\source\commom\PraRegister.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="PraRegister"/>
+      </Item>
+    </Files>
+    <RequiredPkgs>
+      <Item>
+        <PackageName Value="IDEIntf"/>
+      </Item>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>
